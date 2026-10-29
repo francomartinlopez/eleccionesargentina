@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Monitor Electoral de Argentina</title>
+<meta name="description" content="Todas las elecciones nacionales y de gobernadores de Argentina, por provincia y departamento, de 1854 a hoy: mapas, Congreso, abstención, intención de voto, confianza en el gobierno y proyección 2027.">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Monitor Electoral de Argentina">
+<meta property="og:title" content="Monitor Electoral de Argentina">
+<meta property="og:description" content="Todas las elecciones nacionales y de gobernadores, por provincia y departamento, de 1854 a hoy. Mapas, Congreso, encuestas, confianza en el gobierno y proyección 2027.">
+<meta property="og:url" content="https://francomartinlopez.github.io/eleccionesargentina/"><meta property="og:image" content="https://francomartinlopez.github.io/eleccionesargentina/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Monitor Electoral de Argentina: sol de la bandera y mapa del país por departamento">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Monitor Electoral de Argentina"><meta name="twitter:description" content="Todas las elecciones de Argentina por provincia y departamento, de 1854 a hoy."><meta name="twitter:image" content="https://francomartinlopez.github.io/eleccionesargentina/og.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="canonical" href="https://francomartinlopez.github.io/eleccionesargentina/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--cel:#74ACDF;--cel2:#EAF3FB;--sol:#F6B40E;--solb:#85340A;--ink:#14213D;--mut:#5B6B7C;--line:#D7E3EE;--f-d:"Archivo",system-ui,sans-serif;--f-b:"Source Sans 3",system-ui,sans-serif;--f-m:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.5 var(--f-b)}
+header.top{background:#fff;border-top:14px solid var(--cel)}
+.hb{max-width:1200px;margin:0 auto;padding:18px 16px 14px;display:flex;align-items:center;gap:14px}
+.hb h1{margin:0;font:800 clamp(1.5rem,4.2vw,2.5rem)/1 var(--f-d);font-stretch:74%;text-transform:uppercase;letter-spacing:.03em}
+.hb p{margin:6px 0 0;color:var(--mut);font-size:.98rem}
+nav.idx{position:sticky;top:0;z-index:5;background:var(--cel);}
+nav.idx div{max-width:1200px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 10px;scrollbar-width:none}
+nav.idx a{flex:none;color:#fff;text-decoration:none;font:700 .95rem var(--f-b);padding:11px 10px;border-bottom:3px solid transparent}
+nav.idx a:hover{border-bottom-color:#fff}
+main{max-width:1200px;margin:0 auto;padding:0 16px 60px}
+section{padding-top:30px;scroll-margin-top:50px}
+section+section{border-top:1px solid var(--line);margin-top:34px}
+h2{font:780 clamp(1.5rem,3vw,2rem)/1.1 var(--f-d);font-stretch:80%;margin:0 0 6px}
+.lead{color:var(--mut);margin:0 0 14px;max-width:80ch}
+.boceto{display:inline-block;font:500 .72rem var(--f-m);color:var(--solb);border:1px dashed var(--solb);border-radius:4px;padding:3px 7px;margin-bottom:10px}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;margin:6px 0 14px}
+.ctl label{display:flex;flex-direction:column;gap:5px;font:600 .7rem var(--f-m);text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow-x:auto;max-width:100%;scrollbar-width:none}.seg::-webkit-scrollbar{display:none}.ctl label{max-width:100%}
+.seg button{flex:none;font:600 .9rem var(--f-b);border:0;background:#fff;padding:7px 11px;cursor:pointer;color:var(--ink);border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.seg button:disabled{color:#B5C0CA;cursor:not-allowed;background:#F7F9FB}
+select{font:600 .95rem var(--f-b);padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}@media(max-width:500px){.seg button{padding:7px 8px;font-size:.84rem}}
+.mapbox{position:relative;border:1px solid var(--line);border-radius:8px;background:linear-gradient(#fff,#F7FAFD)}
+#map{width:100%;height:auto;display:block}
+#map path{stroke:#fff;stroke-width:.35;cursor:pointer}
+#map path.pv{fill:none;stroke:#14213D;stroke-width:.7;pointer-events:none}
+#map path:hover{stroke:#14213D;stroke-width:1.2}
+#map path.sel{stroke:#000;stroke-width:1.8}
+.inset{position:absolute;right:10px;bottom:10px;width:34%;background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px}
+.inset small{display:block;font:500 .65rem var(--f-m);color:var(--mut);text-transform:uppercase}
+.inset svg{width:100%;height:auto;display:block}
+.inset path{stroke:#fff;stroke-width:.3;cursor:pointer}
+#tip{position:fixed;pointer-events:none;background:#14213D;color:#fff;font-size:.85rem;padding:6px 9px;border-radius:5px;display:none;z-index:9;max-width:260px}
+.panel h3{font:760 1.25rem/1.15 var(--f-d);font-stretch:85%;margin:0 0 2px}
+.panel .sub{color:var(--mut);font-size:.9rem;margin-bottom:10px}
+.bars .row{display:grid;grid-template-columns:minmax(0,1fr) 86px;gap:4px 10px;align-items:center;margin:9px 0}
+.bars .nm{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:7px}.bars .nm i{width:11px;height:11px;border-radius:3px;flex:none}
+.bars .nm small{font-weight:400;color:var(--mut)}
+.bars .pc{font:600 1rem var(--f-m);text-align:right}
+.bars .tr{grid-column:1/-1;height:9px;background:#EEF3F8;border-radius:5px;overflow:hidden}.bars .tr b{display:block;height:100%}
+.bars .vt{grid-column:1/-1;font:500 .75rem var(--f-m);color:var(--mut);margin-top:-3px}
+.unit{margin-top:16px;padding:12px;border:1px solid var(--line);border-left:4px solid var(--sol);border-radius:6px;background:#FFFDF6}
+.unit.empty{color:var(--mut);font-size:.92rem}
+.note{font-size:.82rem;color:var(--mut);margin-top:10px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;margin:8px 0}.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.hemis{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:760px){.hemis{grid-template-columns:1fr}}
+.hemi{border:1px solid var(--line);border-radius:8px;padding:12px}
+.hemi h3{margin:0;font:760 1.15rem var(--f-d);font-stretch:85%}
+.hemi svg{width:100%;height:auto;display:block}
+.hemi table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:6px}
+.hemi td{padding:4px 2px;border-top:1px solid var(--line)}.hemi td.n{text-align:right;font:600 .85rem var(--f-m)}
+.hemi td i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+.det{margin-top:8px;padding:9px 12px;background:var(--cel2);border-left:4px solid var(--cel);border-radius:4px;font-size:.93rem;min-height:42px}
+.ph{border:2px dashed var(--line);border-radius:10px;padding:18px;background:#FAFCFE}
+.ph ul{margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:.93rem}
+.ph .fake{height:150px;margin-top:12px;border-radius:6px;background:repeating-linear-gradient(90deg,#fff 0 58px,#F2F6FA 58px 60px)}
+.gl{margin-top:12px}.gl summary{cursor:pointer;font-weight:700}.gl table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:6px}.gl td{border-top:1px solid var(--line);padding:5px 4px;vertical-align:top}.gl td i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}.gl td.n{text-align:right;font:600 .85rem var(--f-m);white-space:nowrap}.muted{color:var(--mut);font-size:.9rem}.chart{border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}.chart svg{width:100%;height:auto;display:block}.wrapt{overflow-x:auto}.wrapt table{width:100%;border-collapse:collapse;font-size:.86rem}.wrapt th{text-align:left;font:600 .7rem var(--f-m);text-transform:uppercase;color:var(--mut);border-bottom:2px solid var(--cel);padding:5px}.wrapt td{border-top:1px solid var(--line);padding:5px}.wrapt td.n{text-align:right;font-family:var(--f-m)}.now{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 14px}.now div{border:1px solid var(--line);border-top:4px solid var(--c,#74ACDF);border-radius:6px;padding:10px}.now b{display:block;font:800 1.7rem/1 var(--f-d)}.now span{font-size:.88rem;color:var(--mut)}.src li{margin:4px 0;font-size:.92rem;color:var(--mut)}
+.evctl{gap:10px 16px}.evg{display:flex;flex-wrap:wrap;align-items:center;gap:5px}.evg small{font:600 .68rem var(--f-m);text-transform:uppercase;color:var(--mut);width:100%}.evg button{font:600 .82rem var(--f-b);border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;cursor:pointer;color:var(--mut)}.evg button i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid var(--c);background:#fff}.evg button[aria-pressed=true]{color:var(--ink);border-color:var(--c)}.evg button[aria-pressed=true] i{background:var(--c)}.evt{width:100%;border-collapse:collapse;margin-top:6px;font-size:.88rem}.evt td{border-top:1px solid #D7E3EE;padding:3px 2px}.evt td:last-child{text-align:right;font-family:var(--f-m);white-space:nowrap}.evt i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.h3s{font:760 1.3rem/1.15 var(--f-d);font-stretch:85%;margin:30px 0 6px}.ctab{min-width:720px}.ctab th{white-space:normal;vertical-align:bottom}.ctab td.cb{position:relative;min-width:92px}.ctab td.cb span{position:absolute;left:4px;top:7px;bottom:7px;background:#CFE3F5;border-radius:2px;max-width:calc(100% - 8px)}.ctab td.cb em{position:relative;font:600 .85rem var(--f-m);font-style:normal;padding-left:4px}.ctab tr.sep td{border-top:2px solid var(--cel)}
+footer{border-top:14px solid var(--cel);text-align:center;padding:18px;color:var(--mut);font-size:.85rem}
+</style></head><body>
+<header class="top"><div class="hb"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="solmayo" viewBox="178 178 156 156" width="72" height="72" role="img" aria-label="Sol de Mayo"> <g id="ar-c" transform="translate(-153.6)scale(1.024)"> <path id="ar-a" fill="#f6b40e" stroke="#85340a" stroke-width="1.1" d="m396.8 251.3 28.5 62s.5 1.2 1.3.9c.8-.4.3-1.6.3-1.6l-23.7-64m-.7 24.2c-.4 9.4 5.4 14.6 4.7 23s3.8 13.2 5 16.5c1 3.3-1.2 5.2-.3 5.7 1 .5 3-2.1 2.4-6.8s-4.2-6-3.4-16.3-4.2-12.7-3-22"/> <use xlink:href="#ar-a" width="100%" height="100%" transform="rotate(22.5 400 250)"/> <use xlink:href="#ar-a" width="100%" height="100%" transform="rotate(45 400 250)"/> <use xlink:href="#ar-a" width="100%" height="100%" transform="rotate(67.5 400 250)"/> <path id="ar-b" fill="#85340a" d="M404.3 274.4c.5 9 5.6 13 4.6 21.3 2.2-6.5-3.1-11.6-2.8-21.2m-7.7-23.8 19.5 42.6-16.3-43.9"/> <use xlink:href="#ar-b" width="100%" height="100%" transform="rotate(22.5 400 250)"/> <use xlink:href="#ar-b" width="100%" height="100%" transform="rotate(45 400 250)"/> <use xlink:href="#ar-b" width="100%" height="100%" transform="rotate(67.5 400 250)"/> </g> <use xlink:href="#ar-c" width="100%" height="100%" transform="rotate(90 256 256)"/> <use xlink:href="#ar-c" width="100%" height="100%" transform="rotate(180 256 256)"/> <use xlink:href="#ar-c" width="100%" height="100%" transform="rotate(-90 256 256)"/> <circle cx="256" cy="256" r="28.4" fill="#f6b40e" stroke="#85340a" stroke-width="1.5"/> <path id="ar-h" fill="#843511" stroke-width="1" d="M265.7 250q-3.1 0-4.9 2.5c2.2 2 7 2.2 10.3-.2a8 8 0 0 0-5.4-2.4zm0 .4c1.9 0 3.6.8 3.9 1.7-2.2 2.4-5.7 2.2-7.9.4q1.6-2.2 4-2.1"/> <use xlink:href="#ar-d" width="100%" height="100%" transform="matrix(-1 0 0 1 512.3 0)"/> <use xlink:href="#ar-e" width="100%" height="100%" transform="matrix(-1 0 0 1 512.3 0)"/> <use xlink:href="#ar-f" width="100%" height="100%" transform="translate(19.3)"/> <use xlink:href="#ar-g" width="100%" height="100%" transform="matrix(-1 0 0 1 512.3 0)"/> <path fill="#85340a" d="M251.6 260a2 2 0 1 0 2 3q1.4.8 2.4.6h.3c.5 0 1.6 0 2.3-.6q.6.8 1.6.8a2 2 0 0 0 .4-3.9q.8.3.9 1.3a1.3 1.3 0 0 1-2.7 0 3 3 0 0 1-2.7 1.8 3 3 0 0 1-2.7-1.8q-.1 1.2-1.3 1.3a1.3 1.3 0 0 1-.4-2.6zm2.2 5.8c-2.2 0-3 2-5 3.3l3.5-2.2c1.5-.9 2.8.2 3.7.2s2.2-1.1 3.7-.2q2 1.4 3.5 2.2c-2-1.4-2.8-3.3-5-3.3a6 6 0 0 0-2.2.6q-1.6-.6-2.2-.6"/> <path fill="#85340a" d="M253 268.3q-1.2 0-3.6.8c4-1 4.8.4 6.6.4s2.6-1.3 6.6-.4c-4.4-1.4-5.3-.5-6.6-.5-.9 0-1.5-.3-3-.3"/> <path fill="#85340a" d="M249.6 269h-.8c4.6.5 2.4 3.1 7.2 3.1s2.6-2.6 7.2-3c-4.8-.5-3.3 2.4-7.2 2.4-3.7 0-2.6-2.5-6.4-2.5"/> <path fill="#85340a" d="M260 276.1a4 4 0 0 0-8 0 4 4 0 0 1 8 0"/> <path id="ar-e" fill="#85340a" stroke-width="1" d="M238.3 249.9c5-4.4 11.4-5 14.9-1.8a9 9 0 0 1 1.6 3.7q.7 3.8-2.3 8 .5 0 1 .4 2.6-5.1 1.7-10l-.7-2.5c-4.8-4-11.4-4.4-16.2 2.2"/> <path id="ar-d" fill="#85340a" stroke-width="1" d="M246.2 248.6c2.8 0 3.5.6 4.8 1.7s2 .9 2.2 1.1 0 .9-.4.7q-.7-.3-2.7-1.8c-1.3-1-2.6-1-4-1-3.8 0-6 3.2-6.5 3s2.2-3.7 6.6-3.7"/> <use xlink:href="#ar-h" width="100%" height="100%" transform="translate(-19.6)"/> <circle id="ar-f" cx="246.3" cy="252.1" r="2" fill="#85340a" stroke-width="1"/> <path id="ar-g" fill="#85340a" stroke-width="1" d="M241 253.4c3.7 2.8 7.4 2.6 9.6 1.3s2.2-1.8 1.7-1.8c-.4 0-.9.5-2.6 1.4s-4.4.8-8.8-1z"/> </svg><div><h1>Monitor Electoral de Argentina</h1><p>Todas las elecciones nacionales y de gobernadores, de 1854 a hoy</p></div></div></header>
+<nav class="idx"><div><a href="#elecciones">Elecciones</a><a href="#congreso">Congreso</a><a href="#historia">Línea de tiempo</a><a href="#encuestas">Intención de voto</a><a href="#confianza">Confianza en el gobierno</a><a href="#proyeccion">Proyección 2027</a><a href="#fuentes">Fuentes</a></div></nav>
+<main>
+<section id="elecciones">
+<h2>Resultados electorales</h2>
+<p class="lead">Elegí año, cargo e instancia. El mapa muestra quién ganó en cada provincia o departamento; tocá uno para ver el detalle. Con «Medir» el mismo mapa muestra la abstención, el voto en blanco, el nulo o los tres juntos.</p>
+<div class="ctl">
+<label>Año<select id="anio"></select></label>
+<label>Cargo<span class="seg" id="cargo"><button data-v="presidente">Presidente</button><button data-v="gobernadores">Gobernadores</button><button data-v="diputados">Diputados</button><button data-v="senadores">Senadores</button></span></label>
+<label>Instancia<span class="seg" id="inst"><button data-v="paso">PASO</button><button data-v="general">General</button><button data-v="balotaje">Balotaje</button><button data-v="sep">Septiembre</button></span></label>
+<label>Nivel<span class="seg" id="nivel"><button data-v="prov">Provincia</button><button data-v="dep">Departamento</button></span></label>
+<label>Vista<span class="seg" id="vista"><button data-v="res">Resultado</button><button data-v="ten">Tendencia</button></span></label>
+<label>Medir<span class="seg" id="medir"><button data-v="votos">Votos</button><button data-v="abst">Abstención</button><button data-v="blanco">En blanco</button><button data-v="nulo">Nulo</button><button data-v="suma">Los tres</button></span></label>
+</div>
+<div class="grid">
+<div class="mapbox"><svg id="map" viewBox="0 0 520 860" role="img" aria-label="Mapa de resultados"></svg><div class="inset" id="insetbox"><small>AMBA</small><svg id="inset" viewBox="0 0 300 260"></svg></div></div>
+<div class="panel"><h3 id="ptit"></h3><div class="sub" id="psub"></div><div class="bars" id="pbars"></div><div class="legend" id="plg"></div><div class="unit empty" id="punit">Tocá una provincia o un departamento en el mapa.</div><p class="note" id="pnote"></p></div>
+</div>
+
+<h3 class="h3s">Elección por elección, de 1983 a hoy</h3>
+<p class="lead">Cada punto es una elección nacional, ubicada en su fecha: primera vuelta presidencial (P, círculo lleno), diputados en los años legislativos (D, círculo hueco), PASO presidencial (triángulo) y balotaje (cuadrado). Prendé o apagá cada serie con los botones; tocá una elección para ver todos sus valores.</p>
+<div class="ctl evctl" id="evolsel"></div>
+<div class="chart" id="evol"></div>
+<div class="det" id="evoldet"></div>
+<details class="gl"><summary>Ver la tabla completa</summary><div id="evoltab" class="wrapt"></div></details>
+<p class="note">Oficialismo: la fuerza del presidente en ejercicio (en 1999 Duhalde, en 2003 Kirchner como candidato de Duhalde, en 2023 Massa). Principal oposición: la fuerza más votada que no es el oficialismo. Izquierda, centro y derecha suman los votos de cada fuerza según la clasificación del sitio; «otros» no se clasifica. Oficialismo, oposición y tendencias se miden sobre los votos afirmativos (sin blancos); la abstención y «los tres juntos», sobre el padrón; blanco y nulo, sobre los votantes. En PASO y balotaje cada fuerza suma todas sus listas internas. No hay PASO legislativas en la base. Legislativas: escrutinio provisorio y bases sin corregir; en 2001 la base subestima a la Alianza.</p>
+</section>
+
+<section id="congreso">
+<h2>Cómo quedó el Congreso</h2>
+<p class="lead">Composición de las dos Cámaras después de la elección elegida. Se agrupan por familia política; el detalle por bloque está debajo de cada tabla.</p>
+<div class="ctl"><label>Agrupar por<span class="seg" id="cvista"><button data-v="res" aria-pressed="true">Fuerza</button><button data-v="ten" aria-pressed="false">Tendencia</button></span></label></div>
+<p class="note" id="hmsg"></p><div class="hemis"><div class="hemi"><h3>Cámara de Diputados</h3><svg id="hdip" viewBox="0 0 400 215"></svg><table id="tdip"></table></div><div class="hemi"><h3>Senado</h3><svg id="hsen" viewBox="0 0 400 215"></svg><table id="tsen"></table></div></div>
+</section>
+
+<section id="historia">
+<h2>Línea de tiempo, 1853–hoy</h2>
+<p class="lead">Régimen político, tipo de voto, forma de elegir presidente y Senado, e instrumentos. Tocá una elección para cargarla arriba.</p>
+<div class="scroll"><svg id="tl"></svg></div><div class="det" id="tldet">Tocá una franja o un punto.</div>
+</section>
+
+<section id="encuestas">
+<h2>Intención de voto presidencial 2027</h2>
+<p class="lead">Promedio de las encuestas publicadas. Cada consultora cuenta una vez (su última medición de los últimos 45 días); la evolución usa promedios mensuales.</p>
+<div id="encnow"></div>
+<div class="ctl"><label>Serie<span class="seg" id="eserie"><button data-v="candidatos" aria-pressed="true">Por candidato</button><button data-v="fuerzas" aria-pressed="false">Por fuerza</button><button data-v="balotaje" aria-pressed="false">Balotaje</button></span></label></div>
+<div class="chart" id="encchart"></div>
+<details class="gl"><summary>Ver todas las encuestas cargadas</summary><div id="enctable" class="wrapt"></div></details>
+</section>
+
+<section id="confianza">
+<h2>Confianza en el gobierno y voto del oficialismo</h2>
+<p class="lead">Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella, llevado de 0–5 a 0–100 (se multiplica por 20). Los puntos marcan el porcentaje que sacó el candidato del oficialismo en cada elección presidencial.</p>
+<div class="chart" id="icgchart"></div>
+<div class="legend"><span><i style="background:#1F3A93"></i>ICG × 20</span><span><i style="background:#F6B40E;border-radius:50%"></i>Oficialismo, elección general</span><span><i style="background:#fff;border:2px solid #F6B40E;border-radius:50%"></i>PASO</span><span><i style="background:#85340A"></i>Balotaje</span></div>
+<div id="icgtable" class="wrapt"></div>
+
+<h3 class="h3s">Cada elección presidencial: confianza en ese momento y voto</h3>
+<p class="lead">Línea celeste: el índice mes a mes, de noviembre de 2001 a hoy. En cada elección, el punto azul es el índice del mismo mes de la votación y el punto amarillo el porcentaje del candidato oficialista (cuadrado marrón: balotaje). La línea punteada mide la distancia entre los dos.</p>
+<div class="chart" id="icgelec"></div>
+<div class="legend"><span><i style="background:#74ACDF"></i>Índice (0–100)</span><span><i style="background:#1F3A93;border-radius:50%"></i>Índice en el mes de la elección</span><span><i style="background:#F6B40E;border-radius:50%"></i>Voto oficialista, 1.ª vuelta</span><span><i style="background:#85340A"></i>Balotaje</span></div>
+<details class="gl"><summary>Ver los valores</summary><div id="icgelect" class="wrapt"></div></details>
+
+<h3 class="h3s">Luna de miel: los primeros cuatro años de cada gobierno</h3>
+<p class="lead">El índice de cada presidente contado desde su primer mes completo de gestión. Tocá un nombre para ocultarlo o mostrarlo.</p>
+<div class="ctl"><label>Gobiernos<span class="seg" id="lunasel"></span></label></div>
+<div class="chart" id="luna"></div>
+<p class="note" id="lunanote"></p>
+
+<h3 class="h3s">Las cinco preguntas del índice</h3>
+<p class="lead">El índice promedia cinco preguntas. Acá se ven por separado, como promedio de todo cada mandato, para saber en qué confía o desconfía la gente de cada gobierno.</p>
+<div id="icgcomp" class="wrapt"></div>
+<p class="note" id="compnote"></p>
+
+<h3 class="h3s">Confianza por región</h3>
+<p class="lead">Últimos tres meses de encuestas, comparados con septiembre y octubre de 2025 (la elección legislativa). El Gran Buenos Aires va con la Ciudad (AMBA); el resto de la provincia de Buenos Aires, con la región pampeana.</p>
+<div class="ctl"><label>Ver<span class="seg" id="regvista"><button data-v="nivel" aria-pressed="true">Nivel actual</button><button data-v="cambio" aria-pressed="false">Cambio desde oct. 2025</button></span></label></div>
+<div class="grid"><div class="mapbox"><svg id="regmap" viewBox="0 0 520 860" role="img" aria-label="Mapa de confianza por región"></svg></div><div class="panel"><div class="bars" id="regbars"></div><p class="note" id="regnote"></p></div></div>
+
+<h3 class="h3s">Quién confía: por región, edad, sexo y educación</h3>
+<div class="ctl"><label>Comparar por<span class="seg" id="segdim"></span></label></div>
+<div class="chart" id="segchart"></div>
+<div class="legend" id="seglegend"></div>
+<p class="note" id="segnote"></p>
+<p class="note">Fuente: microdatos del Índice de Confianza en el Gobierno, Escuela de Gobierno UTDT (unas 317.000 entrevistas desde 2001), con su factor de ponderación. Con 11 elecciones de diputados se probó qué medida predice mejor el voto oficialista: ninguna de las cinco preguntas, ni el núcleo, el rechazo o las expectativas económicas, supera con claridad al índice general (error medio de unos 5 puntos).</p>
+</section>
+
+<section id="proyeccion">
+<h2>Proyección 2027</h2>
+<p class="lead">Estimación, no pronóstico. Combina la tendencia de las últimas cuatro elecciones en cada departamento con el promedio actual de encuestas y la relación histórica entre el índice de confianza y el voto oficialista. Tocá un distrito para ver el rango.</p>
+<div class="ctl">
+<label>Cargo<span class="seg" id="pcargo"><button data-v="presidente" aria-pressed="true">Presidente</button><button data-v="gobernadores">Gobernadores</button><button data-v="diputados">Diputados</button><button data-v="senadores">Senadores</button></span></label>
+<label>Instancia<span class="seg" id="pinst"><button data-v="general" aria-pressed="true">Primera vuelta</button><button data-v="balotaje">Balotaje</button></span></label>
+<label>Nivel<span class="seg" id="pnivel"><button data-v="prov" aria-pressed="true">Provincia</button><button data-v="dep">Departamento</button></span></label>
+</div>
+<div class="grid"><div class="mapbox"><svg id="pmap" viewBox="0 0 520 860"></svg></div><div class="panel"><h3 id="pptit"></h3><div class="sub" id="ppsub"></div><div class="bars" id="ppbars"></div><div class="unit empty" id="ppunit">Tocá un distrito.</div><p class="note" id="ppnote"></p></div></div>
+</section>
+
+<section id="fuentes">
+<h2>Fuentes y criterios</h2>
+<ul class="src">
+<li>2023: escrutinio definitivo por provincia para la general y el balotaje presidencial; escrutinio provisorio de la DINE por mesa para PASO, departamentos, diputados y senadores (vía repositorio 257arg, CC BY 4.0).</li>
+<li>Porcentajes: en la general y el balotaje presidencial, sobre votos afirmativos (como manda la Constitución); en PASO y legislativas, sobre votos válidos con los votos en blanco.</li>
+<li>Mapas: departamentos del INDEC 2022; departamentos históricos 1869–2022 (Rodríguez, CEUR-CONICET).</li>
+<li>Tendencia ideológica: criterio editorial del sitio, por políticas aplicadas o plataforma. En presidente se clasifica al candidato (Massa: centro); en legislativas, a la fuerza (Unión por la Patria: izquierda).</li>
+</ul>
+</section>
+</main>
+<footer>Monitor Electoral de Argentina · Datos: DINE, Cantón, Calvo, PolAr, Wikipedia, UTDT y encuestadoras citadas · <a href="#fuentes">Fuentes y criterios</a></footer>
+<div id="tip"></div>
+<script src="js/libs.js"></script>
+<script src="datos/geo.js"></script>
+<script src="datos/resultados_2023.js"></script>
+<script src="datos/presidente.js"></script>
+<script src="datos/diputados.js"></script>
+<script src="datos/senadores.js"></script>
+<script src="datos/gobernadores.js"></script>
+<script src="datos/familias.js"></script>
+<script src="datos/congreso.js"></script>
+<script src="datos/participacion.js"></script>
+<script src="datos/evolucion.js"></script>
+<script src="datos/meta.js"></script>
+<script src="datos/linea_de_tiempo.js"></script>
+<script src="datos/encuestas.js"></script>
+<script src="datos/icg.js"></script>
+<script src="datos/icg_detalle.js"></script>
+<script src="datos/proyeccion.js"></script>
+<script>
+
+const S={anio:2023,cargo:"presidente",inst:"general",nivel:"prov",vista:"res",cvista:"res",medir:"votos",sel:null};
+const FECHAS={1983:{general:"30 de octubre"},1989:{general:"14 de mayo"},1995:{general:"14 de mayo"},1999:{general:"24 de octubre"},2003:{general:"27 de abril"},2007:{general:"28 de octubre"},2011:{paso:"14 de agosto",general:"23 de octubre"},2015:{paso:"9 de agosto",general:"25 de octubre",balotaje:"22 de noviembre"},2019:{paso:"11 de agosto",general:"27 de octubre"},2023:{paso:"13 de agosto",general:"22 de octubre",balotaje:"19 de noviembre"}};
+function DS(){return S.cargo=="presidente"?PRES:S.cargo=="diputados"?DIP:S.cargo=="senadores"?SEN:null}
+function years(){if(S.cargo=="gobernadores")return Object.keys(GOBC).map(Number);const d=DS();return d?Object.keys(d).map(Number):[2023]}
+function avail(){if(S.cargo=="gobernadores")return["general"];if(DS())return Object.keys(DS()[S.anio].i);return{gobernadores:["general"],diputados:["general"],senadores:["general"]}[S.cargo]}
+function pjT(y){return y<1951?"I":y<1983?"C":y>=1989&&y<=1999?"D":y>=2007?"I":"C"}
+function cands(){if(S.cargo=="gobernadores"){const o={};for(const k in FAMS)o[k]={...FAMS[k],t:k=="PJ"?pjT(S.anio):FAMS[k].t};return o}return DS()?DS()[S.anio].c:F}
+const prov=topojson.feature(GEO,GEO.objects.prov),dep=topojson.feature(GEO,GEO.objects.dep);
+const DEPN={};dep.features.forEach(f=>DEPN[f.properties.LINK_]=f.properties.DEPTO);
+const proj=d3.geoConicConformal().rotate([65,0]).parallels([-30,-45]).fitExtent([[8,8],[512,852]],prov);
+const path=d3.geoPath(proj);
+const GBA=["Almirante Brown","Avellaneda","Berazategui","Esteban Echeverría","Ezeiza","Florencio Varela","General San Martín","Hurlingham","Ituzaingó","José C. Paz","La Matanza","Lanús","Lomas de Zamora","Malvinas Argentinas","Merlo","Moreno","Morón","Quilmes","San Fernando","San Isidro","San Miguel","Tigre","Tres de Febrero","Vicente López"];
+const AMBA=dep.features.filter(f=>f.properties.PROV_COD=="02"||(f.properties.PROV_COD=="06"&&GBA.includes(f.properties.DEPTO)));
+const projI=d3.geoMercator().fitExtent([[4,4],[296,256]],{type:"FeatureCollection",features:AMBA});const pathI=d3.geoPath(projI);
+const tip=document.getElementById("tip");
+function mix(hex,t){const n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;const m=x=>Math.round(255+(x-255)*t);return`rgb(${m(r)},${m(g)},${m(b)})`}
+function tendKey(k){if(k=="BL")return null;const c=cands()[k];if(!c)return null;return (DS()||S.cargo=="gobernadores")?c.t:c.tl}
+function getVals(code,lvl){
+  if(S.cargo=="gobernadores"){const g=GOBC[S.anio];if(!g)return null;if(lvl=="prov"){const r=g.prov[code];return r?{[r.family||"OTR"]:1}:null}return g.dep[code]||null}
+  const d=DS()?DS()[S.anio].i[S.inst]:(E[S.cargo]&&E[S.cargo][S.inst]);if(!d)return null;return d[lvl][code]||null}
+function shares(v){if(!v||!Object.keys(v).length)return null;v={...v};if(S.cargo=="presidente"&&S.inst!="paso")delete v.BL;let o={};if(S.vista=="ten"){for(const k in v){const t=tendKey(k);if(t)o[t]=(o[t]||0)+v[k];else if(k=="BL")o.BL=(o.BL||0)+v[k]}}else o={...v};const s=Object.values(o).reduce((a,b)=>a+b,0);if(!s)return null;return Object.entries(o).map(([k,x])=>[k,x,x/s]).sort((a,b)=>b[1]-a[1])}
+function colorOf(k){if(k=="_RESTO")return"#DCE3E9";if(S.vista=="ten")return TEND[k]?TEND[k].c:F.BL.c;if(k=="BL")return F.BL.c;const c=cands()[k];return c?c.c:"#9AA7B2"}
+function nameOf(k){if(k=="_RESTO")return"Resto";if(S.vista=="ten")return TEND[k]?TEND[k].n:F.BL.n;if(k=="BL")return F.BL.n;const c=cands()[k];if(S.cargo=="presidente")return c.f?`${c.n} <small>${c.f}</small>`:c.n;if(S.cargo=="diputados"||S.cargo=="senadores"||S.cargo=="gobernadores")return c.n;const cc=CAND[S.cargo]&&CAND[S.cargo][S.inst]&&CAND[S.cargo][S.inst][k];return c.n+(cc?` <small>${cc}</small>`:"")}
+function shortName(k){if(S.vista=="ten")return TEND[k]?TEND[k].n:"En blanco";if(k=="BL")return"En blanco";const c=cands()[k];return c?c.n:k}
+function fillFrom(r){const w=r&&r.find(x=>x[0]!="BL");if(!w)return null;if(S.cargo=="gobernadores"&&w[2]==1)return colorOf(w[0]);const t=Math.max(.35,Math.min(1,.3+(w[2]-.25)*1.7));return mix(colorOf(w[0]),t)}
+function fill(code,lvl){if(S.medir!="votos")return pFill(code,lvl);const r=shares(getVals(code,lvl));const f=fillFrom(r);if(f)return f;if(lvl=="dep"){const p=fillFrom(shares(getVals(code.slice(0,2),"prov")));if(p)return"url(#hatch-"+code.slice(0,2)+")"}return"#E9EEF2"}
+function label(code,lvl){return lvl=="prov"?PROVN[code]:`${DEPN[code]||code} · ${PROVN[code.slice(0,2)]}`}
+function tipHtml(code,lvl){if(S.medir!="votos")return pTip(code,lvl);if(S.cargo=="gobernadores"&&lvl=="prov"){const r=GOBC[S.anio].prov[code];return `<b>${PROVN[code]}</b><br>`+(r?`${r.winner} (${cands()[r.family||"OTR"].n})${r.winner_pct!=null?"<br>"+String(r.winner_pct).replace(".",",")+" %":""}`:"No eligió gobernador en este ciclo")}const r=shares(getVals(code,lvl));let h=`<b>${label(code,lvl)}</b>`;if(r)return h+"<br>"+r.filter(x=>x[0]!="BL").slice(0,2).map(x=>`${shortName(x[0])}: ${(100*x[2]).toFixed(1)} %`).join("<br>");if(lvl=="dep"&&getVals(code.slice(0,2),"prov"))return h+"<br>Sin dato por departamento; rayado con el ganador de la provincia";return h+"<br>"+(getVals(code,lvl)?"Sin datos en el escrutinio":"Sin datos para este cargo")}
+function defs(svg){const d=svg.append("defs");if(S.medir!="votos")return pDefs(d);Object.keys(PROVN).forEach(pc=>{const c=fillFrom(shares(getVals(pc,"prov")));if(!c)return;const p=d.append("pattern").attr("id","hatch-"+pc).attr("patternUnits","userSpaceOnUse").attr("width",5).attr("height",5).attr("patternTransform","rotate(45)");p.append("rect").attr("width",5).attr("height",5).attr("fill","#fff");p.append("rect").attr("width",2.2).attr("height",5).attr("fill",c)})}
+function drawMap(){if(S.medir!="votos")pDomain();
+  const lvl=S.nivel,feats=lvl=="prov"?prov.features:dep.features,idf=f=>lvl=="prov"?f.properties.PROV_COD:f.properties.LINK_;
+  const svg=d3.select("#map");svg.selectAll("*").remove();defs(svg);
+  const mv=(e,html)=>{tip.style.display="block";tip.style.left=Math.min(e.clientX+12,innerWidth-270)+"px";tip.style.top=e.clientY+12+"px";tip.innerHTML=html};
+  svg.append("g").selectAll("path").data(feats).join("path").attr("d",path).attr("fill",f=>fill(idf(f),lvl)).classed("sel",f=>S.sel==idf(f)).on("mousemove",(e,f)=>mv(e,tipHtml(idf(f),lvl))).on("mouseleave",()=>tip.style.display="none").on("click",(e,f)=>{S.sel=idf(f);drawMap();unit()});
+  if(lvl=="dep")svg.append("g").selectAll("path").data(prov.features).join("path").attr("class","pv").attr("d",path);
+  const ins=d3.select("#inset");ins.selectAll("*").remove();defs(ins);
+  document.getElementById("insetbox").style.display=lvl=="dep"?"block":"none";
+  if(lvl=="dep")ins.selectAll("path").data(AMBA).join("path").attr("d",pathI).attr("fill",f=>fill(f.properties.LINK_,"dep")).on("click",(e,f)=>{S.sel=f.properties.LINK_;drawMap();unit()}).on("mousemove",(e,f)=>mv(e,tipHtml(f.properties.LINK_,"dep"))).on("mouseleave",()=>tip.style.display="none");
+}
+function bars(r,el,novotes){if(r.length>8){const keep=r.slice(0,7),rest=r.slice(7);r=[...keep,["_RESTO",rest.reduce((a,x)=>a+x[1],0),rest.reduce((a,x)=>a+x[2],0)]]}el.innerHTML=r.map(([k,v,p])=>`<div class="row"><div class="nm"><i style="background:${colorOf(k)}"></i><span>${nameOf(k)}</span></div><div class="pc">${(100*p).toFixed(2).replace(".",",")} %</div><div class="tr"><b style="width:${100*p}%;background:${colorOf(k)}"></b></div>${novotes?"":`<div class="vt">${v.toLocaleString("es-AR")} votos</div>`}</div>`).join("")}
+const INSX={sep:"Elección de septiembre"};const TIT={presidente:"Presidente",gobernadores:"Gobernadores",diputados:"Diputados nacionales",senadores:"Senadores nacionales"},INSN={paso:"PASO",general:"Elección general",balotaje:"Balotaje"};
+function panel(){if(S.medir!="votos")return pPanel();
+  document.getElementById("ptit").textContent=`${TIT[S.cargo]} ${S.anio}`;
+  const fe=(FECHAS[S.anio]||{})[S.inst]||(S.cargo=="presidente"&&PRES[S.anio].fecha&&PRES[S.anio].fecha[S.inst]);
+  document.getElementById("psub").textContent=S.cargo=="gobernadores"?"Elecciones provinciales, en fechas propias":`${INSN[S.inst]||INSX[S.inst]}${fe?" · "+fe:""} · total país`;
+  const pb=document.getElementById("pbars");let src="";
+  if(S.cargo=="gobernadores"){const g=GOBC[S.anio].prov,c={};Object.values(g).forEach(r=>{const k=S.vista=="ten"?(cands()[r.family||"OTR"].t||"C"):(r.family||"OTR");c[k]=(c[k]||0)+1});const n=Object.keys(g).length;pb.innerHTML=Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="row"><div class="nm"><i style="background:${colorOf(k)}"></i><span>${nameOf(k)}</span></div><div class="pc">${v}</div><div class="tr"><b style="width:${100*v/n}%;background:${colorOf(k)}"></b></div><div class="vt">gobernaciones</div></div>`).join("")+`<details class="gl"><summary>Ver los ${n} gobernadores electos</summary><table>${Object.entries(g).sort((a,b)=>PROVN[a[0]].localeCompare(PROVN[b[0]])).map(([p,r])=>`<tr><td><i style="background:${colorOf(r.family||"OTR")}"></i>${PROVN[p]}</td><td><b>${r.winner}</b><br><small>${r.winner_party||""}${r.year!=S.anio?" · "+r.year:""}</small></td><td class="n">${r.winner_pct!=null?String(r.winner_pct).replace(".",",")+" %":"—"}</td></tr>`).join("")}</table></details>`}
+  else{const ofi=S.cargo=="presidente"&&PRES[S.anio].ofi&&PRES[S.anio].ofi[S.inst];
+    if(ofi&&S.vista=="ten"){const o={};for(const k in ofi){const tk=tendKey(k);if(tk)o[tk]=(o[tk]||0)+ofi[k]}bars(Object.entries(o).map(([k,p])=>[k,0,p/100]).sort((a,b)=>b[2]-a[2]),pb,true);src="Total nacional oficial agrupado por tendencia. "}
+    else if(ofi&&S.vista=="res"){const r=Object.entries(ofi).map(([k,p])=>[k,0,p/100]);const rest=100-Object.values(ofi).reduce((a,b)=>a+b,0);if(rest>.05&&cands().OTR)r.push(["OTR",0,rest/100]);bars(r,pb,true);const el=PRES[S.anio].el&&PRES[S.anio].el[S.inst];if(el&&Object.keys(el).length){pb.querySelectorAll(".row").forEach((row,i)=>{const k=r[i]&&r[i][0];if(el[k]!=null)row.insertAdjacentHTML("beforeend",`<div class="vt">${el[k]} electores</div>`)})}src=S.anio<1912?"Porcentaje sobre el total de electores. ":S.anio<1983?"Total nacional según la ficha de Wikipedia. ":"Porcentajes del escrutinio definitivo. "}
+    else{const d=DS()?DS()[S.anio].i[S.inst].prov:E[S.cargo][S.inst].prov,t={};Object.values(d).forEach(v=>{for(const k in v)t[k]=(t[k]||0)+v[k]});bars(shares(t),pb)}}
+  const lg=document.getElementById("plg");lg.innerHTML=S.vista=="ten"?Object.values(TEND).map(t=>`<span><i style="background:${t.c}"></i>${t.n}</span>`).join("")+(S.cargo=="presidente"?"<span>· «Otros» no se clasifica</span>":""):"";
+  const notes={presidente:{paso:"PASO: cada fuerza suma todas sus listas internas.",balotaje:""},senadores:{general:"El Senado se renueva por tercios: cada elección votan 8 provincias (en 2001, todas) y el resto aparece en gris. Hasta 2001 los senadores los elegían las legislaturas provinciales."},diputados:{general:"Las listas provinciales se agrupan en grandes familias políticas (peronismo, UCR, PRO, etc.). Diputados vota por mitades cada dos años: no todas las provincias renuevan igual cantidad de bancas."},gobernadores:{general:"Cada provincia vota en su propia fecha; se agrupan por ciclo de cuatro años (Corrientes y Santiago del Estero tienen calendario propio). El mapa por departamento solo existe donde la base lo trae."}};
+  let n=(notes[S.cargo]||{})[S.inst]||"";if(S.cargo=="presidente"){n=src+(PRES[S.anio].nota||"")+" "+n;if(S.anio<1912)n+=" No hay votos por provincia para esta elección: el mapa queda en gris.";if(S.anio==1999)n+=" San Luis y Santa Cruz no figuran en la base.";}if(S.cargo=="diputados"||S.cargo=="senadores"){n+=S.anio<2011?" Fuente: base de Ernesto Calvo (1983–1999) y PolAr (2003–2009), sin corregir.":" Fuente: DINE, escrutinio provisorio.";if(S.cargo=="diputados"&&S.anio==2001)n+=" 2001: base de Calvo sin corregir; fue la elección del «voto bronca» (blancos y nulos récord).";if(S.anio==2003)n+=" En 2003 las legislativas se votaron en fechas distintas por provincia y casi un 20 % de las listas no se pudo asignar a una familia.";}if(DS()&&S.anio>=1983&&S.anio<2011)n+=" Rayado: departamento sin dato propio (límites de otra época).";
+  document.getElementById("pnote").textContent=n.trim();
+}
+function unit(){if(S.medir!="votos")return pUnit();const el=document.getElementById("punit");if(!S.sel){el.className="unit empty";el.textContent="Tocá una provincia o un departamento en el mapa.";return}
+  const lvl=S.sel.length==2?"prov":"dep";el.className="unit";
+  if(S.cargo=="gobernadores"&&lvl=="prov"){const r=GOBC[S.anio].prov[S.sel];el.innerHTML=`<h3>${PROVN[S.sel]}</h3>`+(r?`<p>Gobernador electo: <b>${r.winner}</b> (${r.winner_party||""})${r.winner_pct!=null?` · ${String(r.winner_pct).replace(".",",")} %`:""}${r.runoff?` · ganó en balotaje${r.runoff_pct?` con ${String(r.runoff_pct).replace(".",",")} %`:""}`:""}</p>${r.second?`<p class="muted">Segundo: ${r.second} (${r.second_party||""})${r.second_pct!=null?` · ${String(r.second_pct).replace(".",",")} %`:""}</p>`:""}<p class="muted">Elección: ${r.date||r.year}${r.verify?" · fecha o segundo puesto sin verificar":""}</p>`:"<p>No eligió gobernador en este ciclo.</p>");return}
+  const r=shares(getVals(S.sel,lvl));el.innerHTML=`<h3>${label(S.sel,lvl)}</h3><div class="bars"></div>`;if(r)bars(r,el.querySelector(".bars"));else el.innerHTML+=lvl=="dep"&&getVals(S.sel.slice(0,2),"prov")?"<p>Sin dato propio para este departamento en esta elección (los límites o nombres de la época no coinciden con los actuales).</p>":"<p>Sin datos de este cargo en este distrito.</p>"}
+function fixState(){const ys=years();if(!ys.includes(+S.anio))S.anio=Math.max(...ys);if(!avail().includes(S.inst))S.inst=avail().includes("general")?"general":avail()[0];if(S.medir!="votos"&&!pAvail(S.medir))S.medir=["abst","blanco","nulo","suma"].find(pAvail)||"votos";}
+function seg(id,key,after){document.querySelectorAll(`#${id} button`).forEach(b=>{b.onclick=()=>{S[key]=b.dataset.v;after&&after();fixState();render()}})}
+seg("medir","medir");seg("cargo","cargo");seg("inst","inst");seg("nivel","nivel",()=>{S.sel=null});seg("vista","vista");seg("cvista","cvista");
+function syncSeg(){setTimeout(pSync,0);[["cargo","cargo"],["inst","inst"],["nivel","nivel"],["vista","vista"],["cvista","cvista"]].forEach(([id,k])=>document.querySelectorAll(`#${id} button`).forEach(b=>{b.setAttribute("aria-pressed",b.dataset.v==S[k]);if(id=="inst"){b.disabled=!avail().includes(b.dataset.v);if(b.dataset.v=="sep")b.style.display=avail().includes("sep")?"":"none"}}));
+  const ys=years();const ALL=[...new Set([...Object.keys(PRES).map(Number),...Object.keys(DIP).map(Number),...Object.keys(GOBC).map(Number)])].sort((a,b)=>b-a);document.getElementById("anio").innerHTML=ALL.map(y=>`<option value="${y}" ${y==S.anio?"selected":""} ${ys.includes(y)?"":"disabled"}>${y}${ys.includes(y)?"":" · próximamente"}</option>`).join("")}
+// hemiciclos
+const HORD=["IZQ","PJ","FREP","PS","CC","ALI","UCR","DES","PFED","PU","PROV","OTR","CONS","PRO","DER","LLA"];
+function hemi(svgId,tblId,cd,rows){const svg=d3.select("#"+svgId);svg.selectAll("*").remove();const tb=document.getElementById(tblId);
+  if(!cd){svg.append("text").attr("x",200).attr("y",110).attr("text-anchor","middle").attr("fill","#5B6B7C").attr("font-size",14).text("Sin dato para este año");tb.innerHTML="";return}
+  const y=S.anio,ft=k=>k=="PJ"?pjT(y):(FAMS[k]||{}).t;let tot={};
+  if(S.cvista=="ten"){for(const k in cd.fam){const t=ft(k)||"N";tot[t]=(tot[t]||0)+cd.fam[k]}}else tot={...cd.fam};
+  const order=S.cvista=="ten"?["I","C","D","N"].filter(k=>tot[k]):HORD.filter(k=>tot[k]);const N=Object.values(tot).reduce((a,b)=>a+b,0);
+  const R0=70,R1=185,cx=200,cy=200,rr=[];for(let i=0;i<rows;i++)rr.push(R0+(R1-R0)*i/(rows-1));const sr=rr.reduce((a,b)=>a+b,0);let ns=rr.map(r=>Math.round(N*r/sr));ns[ns.length-1]+=N-ns.reduce((a,b)=>a+b,0);
+  const pts=[];rr.forEach((r,i)=>{for(let j=0;j<ns[i];j++){const a=Math.PI-(Math.PI*(j/(ns[i]-1||1)));pts.push({a,x:cx+r*Math.cos(a),y:cy-r*Math.sin(a),r})}});pts.sort((p,q)=>q.a-p.a||p.r-q.r);
+  const dot=Math.min(9,(R1-R0)/rows*.42);let i=0;const col=k=>S.cvista=="ten"?(TEND[k]?TEND[k].c:"#C3CCD4"):(FAMS[k]||FAMS.OTR).c,nm=k=>S.cvista=="ten"?(TEND[k]?TEND[k].n:"Sin clasificar"):(FAMS[k]||FAMS.OTR).n;
+  order.forEach(k=>{for(let n=0;n<tot[k];n++){const p=pts[i++];if(p)svg.append("circle").attr("cx",p.x).attr("cy",p.y).attr("r",dot).attr("fill",col(k))}});
+  svg.append("text").attr("x",cx).attr("y",cy-8).attr("text-anchor","middle").attr("font-family","Archivo").attr("font-weight",800).attr("font-size",34).text(N);
+  svg.append("text").attr("x",cx).attr("y",cy+12).attr("text-anchor","middle").attr("font-size",11).attr("fill","#5B6B7C").text(`mayoría: ${Math.floor(N/2)+1}`);
+  tb.innerHTML=order.map(k=>`<tr><td><i style="background:${col(k)}"></i>${nm(k)}</td><td class="n">${tot[k]}</td></tr>`).join("")+`<tr><td colspan="2"><details><summary style="cursor:pointer;color:#5B6B7C">Bloques tal como figuran en la fuente</summary><div style="font-size:.82rem;color:#5B6B7C">${cd.items.map(x=>`${x.l} ${x.n}`).join(" · ")}</div></details>${cd.ok?"":`<div style="font-size:.8rem;color:#85340A">Los bloques de la fuente suman ${cd.total}; puede faltar o sobrar alguna banca.</div>`}</td></tr>`}
+function render(){syncSeg();drawMap();panel();unit();const cc=closestComp(),cy=CAM[cc]||{};const won=cy.dip&&cy.dip.won;document.getElementById("hmsg").textContent=!cc?"No hay datos de bancas antes de 1912.":won?`Bancas de Diputados ganadas en la elección de ${cc} (no la composición total de la Cámara). El Senado de esa época lo elegían las legislaturas. Fuente: Wikipedia.`:`Composición después de la elección de ${cc}. Fuente: Wikipedia (bloques al inicio del período).`;document.getElementById("hmsg").style.display="block";hemi("hdip","tdip",cy.dip,9);hemi("hsen","tsen",cy.sen,5)}
+function closestComp(){const ks=Object.keys(CAM).map(Number).filter(k=>k<=S.anio&&(S.anio<1983||k>=1983)&&(S.anio-k<6));return ks.length?Math.max(...ks):null}
+const an=document.getElementById("anio");an.onchange=()=>{S.anio=+an.value;S.sel=null;fixState();render()};const PY=[1854,1860,1862,1868,1874,1880,1886,1892,1898,1904,1910,1916,1922,1928,1931,1937,1946,1951,1958,1963,1973,1983,1989,1995,1999,2003,2007,2011,2015,2019,2023].reverse();
+
+// línea de tiempo
+(function(){const Y0=1853,Y1=2027,PX=8,LW=150,W=LW+(Y1-Y0)*PX+20,RH=26;const rows=Object.keys(BANDAS);const H=34+rows.length*(RH+6)+70;const x=y=>LW+(y-Y0)*PX;let s="";
+for(let y=1860;y<=2020;y+=10)s+=`<line x1="${x(y)}" x2="${x(y)}" y1="20" y2="${H-6}" stroke="#EEF3F8"/><text x="${x(y)}" y="14" font-size="11" fill="#5B6B7C" text-anchor="middle">${y}</text>`;
+rows.forEach((k,i)=>{const yy=24+i*(RH+6);s+=`<text x="8" y="${yy+RH/2+4}" font-size="12" font-weight="700" fill="#14213D">${BANDAS[k].t}</text>`;BANDAS[k].items.forEach(b=>{const w=(b[1]-b[0])*PX;const dark=["facto","plena","joven","bal","bup"].includes(b[2]);s+=`<g class="b" data-t="${BANDAS[k].t}: ${b[0]}–${b[1]>2026?"hoy":b[1]}. ${b[3]}" style="cursor:pointer"><rect x="${x(b[0])}" y="${yy}" width="${w-1}" height="${RH}" rx="3" fill="${COL[b[2]]}"/>${w>70?`<text x="${x(b[0])+5}" y="${yy+RH/2+4}" font-size="10.5" fill="${dark?"#fff":"#14213D"}">${b[3].length*5.2>w-8?b[3].slice(0,Math.floor((w-14)/5.2))+"…":b[3]}</text>`:""}</g>`})});
+const ey=24+rows.length*(RH+6)+16;s+=`<text x="8" y="${ey+4}" font-size="12" font-weight="700" fill="#14213D">Presidenciales</text><text x="8" y="${ey+30}" font-size="12" font-weight="700" fill="#14213D">Legislativas</text>`;
+ELEC.forEach(y=>s+=`<g class="b e" data-y="${y}" data-t="Elección presidencial de ${y}${PRES[y]?" · tocá para verla arriba":" · se carga en la tarea 10 u 11"}" style="cursor:pointer"><circle cx="${x(y)+PX/2}" cy="${ey}" r="${PRES[y]?8:5}" fill="#F6B40E" stroke="#85340A" stroke-width="${PRES[y]?2.2:1}"/></g>`);
+LEG.forEach(y=>s+=`<g class="b" data-t="Legislativa de ${y}" style="cursor:pointer"><circle cx="${x(y)+PX/2}" cy="${ey+26}" r="4.5" fill="#74ACDF" stroke="#2F7FC1"/></g>`);
+const sv=document.getElementById("tl");sv.setAttribute("width",W);sv.setAttribute("height",H);sv.setAttribute("viewBox",`0 0 ${W} ${H}`);sv.innerHTML=s;
+sv.addEventListener("click",e=>{const g=e.target.closest(".b");if(!g)return;document.getElementById("tldet").textContent=g.dataset.t;if(g.dataset.y&&PRES[g.dataset.y]){S.cargo="presidente";S.anio=+g.dataset.y;S.sel=null;fixState();render();document.getElementById("elecciones").scrollIntoView()}});
+requestAnimationFrame(()=>document.querySelector("#historia .scroll").scrollLeft=W)})();
+// ===== Encuestas, ICG y proyección =====
+const CCOL={Milei:"#6C4C99",Kicillof:"#29B6F6",Massa:"#1F88E5",Bullrich:"#E8B800",Macri:"#F2C94C",Villarruel:"#8D6E63",Grabois:"#2E7D32",Schiaretti:"#1F3A93",Izquierda:"#E2434B",Cristina:"#0277BD",Larreta:"#FFB300",LLA:"#6C4C99",Peronismo:"#29B6F6",PRO_JxC:"#E8B800",UCR:"#D52B1E","Provincias Unidas":"#00897B",Otros:"#9AA7B2",Indecisos:"#C9D3DC",Blanco:"#DCE3E9"};
+const ccol=k=>CCOL[k]||"#7F8C8D";const fnum=x=>String(Math.round(x*10)/10).replace(".",",");
+function lineChart(el,series,opt){ // series: [{k,pts:[[date,val]],c,dash,dots}]
+  const nw=el.clientWidth&&el.clientWidth<600,W=nw?560:900,H=nw?Math.round((opt.h||340)*1.25):opt.h||340,L=40,Rm=nw?150:150,T=14,B=30;const all=series.flatMap(s=>s.pts);if(!all.length){el.innerHTML='<p class="note">Sin datos todavía.</p>';return}
+  const t0=opt.t0||Math.min(...all.map(p=>+p[0])),t1=opt.t1||Math.max(...all.map(p=>+p[0]));const ymax=opt.ymax||Math.ceil(Math.max(...all.map(p=>p[1]))/10)*10;
+  const x=d=>L+(W-L-Rm)*(+d-t0)/(t1-t0||1),y=v=>T+(H-T-B)*(1-v/ymax);let s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for(let v=0;v<=ymax;v+=ymax>50?20:10)s+=`<line x1="${L}" x2="${W-Rm}" y1="${y(v)}" y2="${y(v)}" stroke="#EEF3F8"/><text x="${L-6}" y="${y(v)+4}" font-size="11" text-anchor="end" fill="#5B6B7C">${v}</text>`;
+  const y0=new Date(t0).getFullYear(),y1=new Date(t1).getFullYear();if((t1-t0)/2.63e9<=36){const MS=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];const st=(t1-t0)/2.63e9>18?3:(t1-t0)/2.63e9>8?2:1;const a=new Date(t0);for(let d=new Date(a.getFullYear(),a.getMonth()+1,1);+d<=t1;d=new Date(d.getFullYear(),d.getMonth()+st,1)){s+=`<line x1="${x(d)}" x2="${x(d)}" y1="${T}" y2="${H-B}" stroke="#F3F6F9"/><text x="${x(d)}" y="${H-10}" font-size="11" text-anchor="middle" fill="#5B6B7C">${MS[d.getMonth()]} ${String(d.getFullYear()).slice(2)}</text>`}}else{const step=Math.max(1,Math.ceil((y1-y0)/12));for(let yy=y0;yy<=y1+1;yy+=step){const d=new Date(yy,0,1);if(+d<t0||+d>t1)continue;s+=`<line x1="${x(d)}" x2="${x(d)}" y1="${T}" y2="${H-B}" stroke="#F3F6F9"/><text x="${x(d)}" y="${H-10}" font-size="11" text-anchor="middle" fill="#5B6B7C">${yy}</text>`}}
+  (opt.bands||[]).forEach(b=>{s+=`<rect x="${x(b[0])}" y="${T}" width="${Math.max(0,x(b[1])-x(b[0]))}" height="${H-T-B}" fill="${b[3]}" opacity=".35"/><text x="${x(b[0])+4}" y="${T+12}" font-size="10.5" fill="#5B6B7C">${b[2]}</text>`});
+  series.forEach(se=>{const p=se.pts.slice().sort((a,b)=>a[0]-b[0]);if(se.line!==false&&p.length>1)s+=`<path d="M${p.map(q=>x(q[0]).toFixed(1)+","+y(q[1]).toFixed(1)).join("L")}" fill="none" stroke="${se.c}" stroke-width="${se.w||2.4}" ${se.dash?'stroke-dasharray="5 4"':''}/>`;
+    if(se.dots)p.forEach(q=>{s+=se.dots=="hollow"?`<circle cx="${x(q[0])}" cy="${y(q[1])}" r="5" fill="#fff" stroke="${se.c}" stroke-width="2.2"/>`:se.dots=="sq"?`<rect x="${x(q[0])-5}" y="${y(q[1])-5}" width="10" height="10" fill="${se.c}"/>`:`<circle cx="${x(q[0])}" cy="${y(q[1])}" r="5.5" fill="${se.c}" stroke="#85340A" stroke-width="1"/>`;if(q[2])s+=`<text x="${x(q[0])+7}" y="${y(q[1])-7}" font-size="10.5" fill="#14213D">${q[2]}</text>`});
+    if(se.label&&p.length)(opt._lab=opt._lab||[]).push([x(p[p.length-1][0])+6,y(p[p.length-1][1])+4,se.c,`${se.label} ${fnum(p[p.length-1][1])}`])});
+  const lb=(opt._lab||[]).sort((a,b)=>a[1]-b[1]);for(let i=1;i<lb.length;i++)if(lb[i][1]-lb[i-1][1]<15)lb[i][1]=lb[i-1][1]+15;const ov=lb.length?lb[lb.length-1][1]-(H-4):0;if(ov>0)lb.forEach(l=>l[1]-=ov);lb.forEach(l=>{s+=`<text x="${l[0]}" y="${l[1]}" font-size="12" font-weight="700" fill="${l[2]}">${l[3]}</text>`});opt._lab=null;
+  el.innerHTML=s+"</svg>"}
+function encRender(){if(typeof ENC=="undefined"){document.getElementById("encnow").innerHTML='<p class="note">Cargando encuestas…</p>';return}
+  const ser=document.querySelector('#eserie button[aria-pressed=true]').dataset.v;const NOV=["Indecisos","Blanco","Blanco/Indecisos","No contesta","No votaría","Ninguno"];const rows=ENC.filter(r=>r.serie==ser&&(ser!="balotaje"||("Milei" in r.valores&&"Kicillof" in r.valores))).map(r=>({...r,d:new Date(r.fecha)}));
+  const last=Math.max(...rows.map(r=>+r.d));const recent={};rows.filter(r=>last-r.d<45*864e5).forEach(r=>{if(!recent[r.encuestadora]||recent[r.encuestadora].d<r.d)recent[r.encuestadora]=r});
+  const R=Object.values(recent),avg={};R.forEach(r=>{for(const k in r.valores)(avg[k]=avg[k]||[]).push(r.valores[k])});
+  const now=Object.entries(avg).filter(([k,v])=>!NOV.includes(k)&&v.length>=2).map(([k,v])=>[k,v.reduce((a,b)=>a+b,0)/v.length,Math.min(...v),Math.max(...v),v.length]).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  document.getElementById("encnow").innerHTML=`<div class="now">${now.map(n=>`<div style="--c:${ccol(n[0])}"><b>${fnum(n[1])} %</b><span>${n[0]} · rango ${fnum(n[2])}–${fnum(n[3])} · ${n[4]} encuestas</span></div>`).join("")}</div><p class="note">Promedio de ${R.length} consultoras con mediciones hasta ${new Date(last).toLocaleDateString("es-AR")}.</p>`;
+  const bym={};rows.forEach(r=>{const m=r.fecha.slice(0,7);for(const k in r.valores){if(NOV.includes(k))continue;((bym[k]=bym[k]||{})[m]=bym[k][m]||[]).push(r.valores[k])}});
+  const keys=Object.keys(bym).sort((a,b)=>Object.keys(bym[b]).length-Object.keys(bym[a]).length).slice(0,7);
+  lineChart(document.getElementById("encchart"),keys.map(k=>({k,c:ccol(k),label:k,dots:"",pts:Object.entries(bym[k]).map(([m,v])=>[new Date(m+"-15"),v.reduce((a,b)=>a+b,0)/v.length])})),{ymax:60});
+  document.getElementById("enctable").innerHTML=`<table><tr><th>Fecha</th><th>Consultora</th><th>Muestra</th><th>Valores</th></tr>${rows.sort((a,b)=>b.d-a.d).map(r=>`<tr><td>${r.fecha}</td><td>${r.fuente?`<a href="${r.fuente}">${r.encuestadora}</a>`:r.encuestadora}</td><td class="n">${r.muestra||"—"}</td><td>${Object.entries(r.valores).map(([k,v])=>`${k} ${fnum(v)}`).join(" · ")}</td></tr>`).join("")}</table>`}
+document.querySelectorAll("#eserie button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#eserie button").forEach(x=>x.setAttribute("aria-pressed",x==b));encRender()});
+const OFIC={2003:["NK","Kirchner (Duhalde)"],2007:["CFK","Cristina Fernández"],2011:["CFK","Cristina Fernández"],2015:["SCI","Scioli (Cristina)"],2019:["MAC","Macri"],2023:["UXP","Massa (Fernández)"]};
+const FE={2003:{general:"2003-04-27"},2007:{general:"2007-10-28"},2011:{paso:"2011-08-14",general:"2011-10-23"},2015:{paso:"2015-08-09",general:"2015-10-25",balotaje:"2015-11-22"},2019:{paso:"2019-08-11",general:"2019-10-27"},2023:{paso:"2023-08-13",general:"2023-10-22",balotaje:"2023-11-19"}};
+function oficShare(y,inst){const P=PRES[y],k=OFIC[y][0];if(inst!="paso"&&P.ofi&&P.ofi[inst]&&P.ofi[inst][k]!=null)return P.ofi[inst][k];const d=P.i[inst];if(!d)return null;const t={};Object.values(d.prov).forEach(v=>{for(const q in v)t[q]=(t[q]||0)+v[q]});if(inst!="paso")delete t.BL;const s=Object.values(t).reduce((a,b)=>a+b,0);return 100*(t[k]||0)/s}
+function icgAt(m){if(typeof ICG=="undefined")return null;const r=ICG.serie.find(x=>x.mes==m);return r?r.icg*20:null}
+function prevMonth(d){const x=new Date(d);x.setMonth(x.getMonth()-1);return x.toISOString().slice(0,7)}
+function icgRender(){if(typeof ICG=="undefined"){document.getElementById("icgchart").innerHTML='<p class="note">Cargando el índice…</p>';return}
+  const pts=ICG.serie.map(r=>[new Date(r.mes+"-15"),r.icg*20]);const gen=[],paso=[],bal=[],rows=[];
+  for(const y in OFIC)for(const inst in FE[y]){const v=oficShare(y,inst);if(v==null)continue;const d=new Date(FE[y][inst]);const pt=[d,v,inst=="general"?`${y} ${OFIC[y][1].split(" ")[0]}`:""];(inst=="general"?gen:inst=="paso"?paso:bal).push(pt);const ic=icgAt(prevMonth(FE[y][inst]));rows.push([y,inst,OFIC[y][1],ic,v])}
+  const bands=(ICG.gobiernos||[]).map((g,i)=>[new Date(g.desde+"-01"),new Date(g.hasta+"-28"),({"De la Rúa":"","Duhalde":"Duhalde"}[g.presidente])??(/Fernández de Kirchner/.test(g.presidente)?"Cristina "+(/II/.test(g.presidente)?"II":"I"):g.presidente.replace(/ I+$/,"").split(" ").slice(-1)[0]),i%2?"#F3F6F9":"#E8F2FB"]);
+  lineChart(document.getElementById("icgchart"),[{c:"#1F3A93",pts,w:2},{c:"#F6B40E",pts:gen,line:false,dots:"f"},{c:"#F6B40E",pts:paso,line:false,dots:"hollow"},{c:"#85340A",pts:bal,line:false,dots:"sq"}],{ymax:80,bands,h:380});
+  const g=rows.filter(r=>r[1]=="general"&&r[3]!=null);let fit="";if(g.length>2){const n=g.length,mx=g.reduce((a,r)=>a+r[3],0)/n,my=g.reduce((a,r)=>a+r[4],0)/n;let sxy=0,sxx=0,syy=0;g.forEach(r=>{sxy+=(r[3]-mx)*(r[4]-my);sxx+=(r[3]-mx)**2;syy+=(r[4]-my)**2});const b=sxy/sxx,a=my-b*mx,rr=sxy/Math.sqrt(sxx*syy);const cur=ICG.serie[ICG.serie.length-1];const pred=a+b*cur.icg*20;window.ICGFIT={a,b,r:rr,cur:cur.icg*20,pred,mes:cur.mes};fit=`<p class="note">Relación en las elecciones generales: voto oficialista ≈ ${fnum(a)} + ${fnum(b)} × índice (correlación r = ${fnum(rr)}). Con el último índice (${cur.mes}: ${fnum(cur.icg*20)} sobre 100), el oficialismo rondaría el <b>${fnum(pred)} %</b> en una primera vuelta. Son solo ${n} elecciones: la estimación es gruesa.</p>`}
+  document.getElementById("icgtable").innerHTML=`<table><tr><th>Elección</th><th>Instancia</th><th>Oficialismo</th><th>Índice mes previo (×20)</th><th>Voto</th><th>Diferencia</th></tr>${rows.map(r=>`<tr><td>${r[0]}</td><td>${{paso:"PASO",general:"General",balotaje:"Balotaje"}[r[1]]}</td><td>${r[2]}</td><td class="n">${r[3]!=null?fnum(r[3]):"—"}</td><td class="n">${fnum(r[4])} %</td><td class="n">${r[3]!=null?(r[4]-r[3]>0?"+":"")+fnum(r[4]-r[3]):"—"}</td></tr>`).join("")}</table>`+fit}
+
+// ===== Índice de confianza: análisis detallado (microdatos UTDT) =====
+const PAL=["#1F3A93","#29B6F6","#E8B800","#85340A","#6C4C99","#00897B"];
+const svgT=(x,y,t,o={})=>`<text x="${x}" y="${y}" font-size="${o.fs||13}" ${o.a?`text-anchor="${o.a}"`:""} ${o.w?`font-weight="${o.w}"`:""} fill="${o.c||"#5B6B7C"}">${t}</text>`;
+function needD(id){if(typeof ICGD=="undefined"){const e=document.getElementById(id);if(e)e.innerHTML='<p class="note">Cargando…</p>';return false}return true}
+
+// 1. Cada elección presidencial: índice del mes de la elección contra voto del oficialismo
+function icgElecRender(){if(typeof ICG=="undefined")return;const el=document.getElementById("icgelec");
+  const nw=el.clientWidth<600,W=nw?560:900,H=nw?520:440,L=40,R=nw?44:24,T=20,B=34,ser=ICG.serie,t0=+new Date(ser[0].mes+"-01"),t1=+new Date(ser[ser.length-1].mes+"-28");
+  const x=d=>L+(W-L-R)*(+d-t0)/(t1-t0),y=v=>T+(H-T-B)*(1-v/80);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Índice de confianza y voto del oficialismo en cada elección presidencial">`;
+  for(let v=0;v<=80;v+=20)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#EEF3F8"/>`+svgT(L-8,y(v)+5,v+(v?"":""),{a:"end"});
+  for(let yy=2002;yy<=2026;yy+=nw?6:4){const d=new Date(yy,0,1);s+=`<line x1="${x(d)}" x2="${x(d)}" y1="${T}" y2="${H-B}" stroke="#F3F6F9"/>`+svgT(x(d),H-10,yy,{a:"middle"})}
+  s+=`<path d="M${ser.map(r=>x(new Date(r.mes+"-15")).toFixed(1)+","+y(r.icg*20).toFixed(1)).join("L")}" fill="none" stroke="#74ACDF" stroke-width="2.2"/>`;
+  const rows=[];
+  for(const yr in OFIC)for(const inst of ["general","balotaje"]){if(!FE[yr][inst])continue;const v=oficShare(yr,inst);const m=FE[yr][inst].slice(0,7);const ic=icgAt(m);if(v==null||ic==null)continue;
+    const d=new Date(FE[yr][inst]),X=x(d)+(inst=="balotaje"?9:0);rows.push([yr,inst,OFIC[yr][1],ic,v,m]);
+    s+=`<line x1="${X}" x2="${X}" y1="${y(ic)}" y2="${y(v)}" stroke="#14213D" stroke-width="1.4" stroke-dasharray="3 3"/>`;
+    s+=`<circle cx="${X}" cy="${y(ic)}" r="6" fill="#1F3A93" stroke="#fff" stroke-width="1.5"/>`;
+    s+=inst=="balotaje"?`<rect x="${X-6}" y="${y(v)-6}" width="12" height="12" fill="#85340A" stroke="#fff" stroke-width="1.5"/>`:`<circle cx="${X}" cy="${y(v)}" r="7" fill="#F6B40E" stroke="#85340A" stroke-width="1.2"/>`;
+    if(inst=="general"){const up=v>=ic,close=Math.abs(y(v)-y(ic))<18;s+=svgT(X,y(Math.max(v,ic))-14,yr,{a:"middle",w:700,c:"#14213D",fs:14})+svgT(X+11,y(v)+(close?(up?-4:10):(up?-1:13)),fnum(v)+" %",{fs:13,w:700,c:"#85340A"})+(close?svgT(X-11,y(ic)+(up?16:-6),fnum(ic),{fs:13,c:"#1F3A93",a:"end"}):svgT(X+11,y(ic)+(up?14:-2),fnum(ic),{fs:13,c:"#1F3A93"}))}}
+  el.innerHTML=s+"</svg>";
+  document.getElementById("icgelect").innerHTML=`<table><tr><th>Elección</th><th>Oficialismo</th><th>Mes</th><th>Índice</th><th>Voto</th><th>Voto − índice</th></tr>${rows.map(r=>`<tr><td>${r[0]} ${r[1]=="balotaje"?"balotaje":"1.ª vuelta"}</td><td>${r[2]}</td><td>${r[5]}</td><td class="n">${fnum(r[3])}</td><td class="n">${fnum(r[4])} %</td><td class="n">${(r[4]-r[3]>0?"+":"")+fnum(r[4]-r[3])}</td></tr>`).join("")}</table>`}
+
+// 2. Luna de miel comparada
+const LS={off:{}};
+function lunaRender(){if(!needD("luna"))return;const el=document.getElementById("luna"),D=ICGD.luna;
+  document.getElementById("lunasel").innerHTML=D.map(g=>`<button data-n="${g.n}" aria-pressed="${!LS.off[g.n]}">${g.n}</button>`).join("");
+  document.querySelectorAll("#lunasel button").forEach(b=>b.onclick=()=>{LS.off[b.dataset.n]=!LS.off[b.dataset.n];lunaRender()});
+  const nw=el.clientWidth<600,W=nw?560:900,H=nw?460:400,L=40,R=120,T=16,B=40,x=m=>L+(W-L-R)*(m-1)/47,y=v=>T+(H-T-B)*(1-v/80);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Índice de confianza en los primeros 48 meses de cada gobierno">`;
+  for(let v=0;v<=80;v+=20)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#EEF3F8"/>`+svgT(L-8,y(v)+5,v,{a:"end"});
+  [1,12,24,36,48].forEach(m=>{s+=`<line x1="${x(m)}" x2="${x(m)}" y1="${T}" y2="${H-B}" stroke="#F3F6F9"/>`+svgT(x(m),H-18,m==1?"mes 1":m==12?"1 año":m/12+" años",{a:"middle"})});
+  const vis=D.filter(g=>!LS.off[g.n]);const ends=[];
+  vis.forEach(g=>{const p=g.v.map((v,i)=>v==null?null:[x(i+1),y(v)]).filter(Boolean);const mil=g.n=="Milei";s+=`<path d="M${p.map(q=>q[0].toFixed(1)+","+q[1].toFixed(1)).join("L")}" fill="none" stroke="${g.c}" stroke-width="${mil?3.6:2}" ${mil?"":'opacity=".85"'}/>`;const l=p[p.length-1];ends.push([l[0],l[1],g.n,g.c,g.v[g.v.length-1]])});
+  ends.sort((a,b)=>a[1]-b[1]);for(let i=1;i<ends.length;i++)if(ends[i][1]-ends[i-1][1]<15)ends[i][1]=ends[i-1][1]+15;
+  ends.forEach(e=>{s+=svgT(e[0]+6,e[1]+4,`${e[2]} ${fnum(e[4])}`,{fs:13,w:700,c:e[3]})});
+  el.innerHTML=s+"</svg>";
+  const mi=D.find(g=>g.n=="Milei");if(mi){const n=mi.v.length;const cmp=D.filter(g=>g.n!="Milei"&&g.v.length>=n).map(g=>`${g.n} ${fnum(g.v[n-1])}`).join(" · ");document.getElementById("lunanote").textContent=`Mes ${n} de Milei: ${fnum(mi.v[n-1])}. Los demás en su mes ${n}: ${cmp}.`}}
+
+// 3. Las cinco preguntas
+function compRender(){if(!needD("icgcomp"))return;const C=ICGD.comp;const cell=v=>`<td class="cb"><span style="width:${v}%"></span><em>${fnum(v)}</em></td>`;
+  const best=C.preguntas.map((_,j)=>Math.max(...C.gob.map(g=>g.v[j])));
+  let h=`<table class="ctab"><tr><th>Gobierno</th>${C.preguntas.map(p=>`<th>${p}</th>`).join("")}<th>Índice</th></tr>`;
+  h+=C.gob.map(g=>`<tr><td><b>${g.n}</b></td>${g.v.map(cell).join("")}<td class="n"><b>${fnum(g.icg)}</b></td></tr>`).join("");
+  h+=`<tr class="sep"><td>Hoy (${ICGD.actualizado}, 3 meses)</td>${C.actual.map(cell).join("")}<td></td></tr><tr><td>Un año antes</td>${C.anterior.map(cell).join("")}<td></td></tr>`;
+  document.getElementById("icgcomp").innerHTML=h+"</table>";
+  const d=C.actual.map((v,i)=>[C.preguntas[i],v-C.anterior[i]]).sort((a,b)=>a[1]-b[1]);
+  document.getElementById("compnote").textContent=`En el último año la que más cambió es «${d[0][0]}» (${d[0][1]>0?"+":""}${fnum(d[0][1])} puntos). Valores en 0–100: porcentaje que responde a favor del gobierno en cada pregunta.`}
+
+// 4. Mapa por región
+const RS={vista:"nivel"};
+const RPF={"02":"AMBA","06":"Pampeana","14":"Pampeana","82":"Pampeana","30":"Pampeana","42":"Pampeana","50":"Cuyo","70":"Cuyo","74":"Cuyo","90":"NOA","66":"NOA","38":"NOA","10":"NOA","86":"NOA","46":"NOA","22":"NEA","18":"NEA","54":"NEA","34":"NEA","58":"Patagonia","62":"Patagonia","26":"Patagonia","78":"Patagonia","94":"Patagonia"};
+const regOf=f=>{const p=f.properties.PROV_COD;return p=="06"&&GBA.includes(f.properties.DEPTO)?"AMBA":RPF[p]};
+function regColor(v){if(v==null)return"#E9EEF2";if(RS.vista=="nivel"){const t=Math.max(0,Math.min(1,(v-25)/30));return mix("#1F3A93",.15+.85*t)}const t=Math.max(-1,Math.min(1,v/10));return t>=0?mix("#1F3A93",.12+.88*t):mix("#C0392B",.12+.88*-t)}
+function regRender(){if(!needD("regmap"))return;const R=ICGD.region,D=R.datos,val=r=>RS.vista=="nivel"?D[r].ahora:D[r].cambio;
+  document.querySelectorAll("#regvista button").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.v==RS.vista);b.onclick=()=>{RS.vista=b.dataset.v;regRender()}});
+  const svg=d3.select("#regmap");svg.selectAll("*").remove();
+  svg.append("g").selectAll("path").data(dep.features).join("path").attr("d",path).attr("fill",f=>regColor(val(regOf(f)))).attr("stroke",f=>regColor(val(regOf(f)))).attr("stroke-width",.4)
+   .on("mousemove",(e,f)=>{const r=regOf(f);tip.style.display="block";tip.style.left=Math.min(e.clientX+12,innerWidth-270)+"px";tip.style.top=e.clientY+12+"px";tip.innerHTML=`<b>${r}</b><br>Hoy: ${fnum(D[r].ahora)}<br>Oct. 2025: ${fnum(D[r].oct2025)} (${D[r].cambio>0?"+":""}${fnum(D[r].cambio)})<br><small>${D[r].n} encuestas</small>`}).on("mouseleave",()=>tip.style.display="none");
+  svg.append("g").selectAll("path").data(prov.features).join("path").attr("d",path).attr("fill","none").attr("stroke","#fff").attr("stroke-width",.9).style("pointer-events","none");
+  const ord=Object.keys(D).sort((a,b)=>val(b)-val(a));
+  document.getElementById("regbars").innerHTML=`<h3>${RS.vista=="nivel"?"Confianza hoy":"Cambio desde oct. 2025"}</h3><div class="sub">${R.periodo} · país ${fnum(R.pais.ahora)} (oct. 2025: ${fnum(R.pais.oct2025)})</div>`+ord.map(r=>{const v=val(r);return`<div class="row"><div class="nm"><i style="background:${regColor(v)}"></i><span>${r} <small>${D[r].n} casos</small></span></div><div class="pc">${RS.vista=="nivel"?fnum(v):(v>0?"+":"")+fnum(v)}</div><div class="tr"><b style="width:${RS.vista=="nivel"?v:Math.min(100,Math.abs(v)*8)}%;background:${regColor(v)}"></b></div></div>`}).join("")+
+   `<p class="note">Ajuste que usa la proyección 2027 sobre el voto de La Libertad Avanza: ${ord.map(r=>`${r} ${(D[r].relativo*R.k>0?"+":"")+fnum(D[r].relativo*R.k)}`).join(" · ")} puntos.</p>`;
+  document.getElementById("regnote").textContent=R.nota+" Las regiones con menos de 200 casos (Patagonia, NEA) tienen un margen de error de unos ±6 puntos."}
+
+// 5. Segmentos
+const SS={dim:"region"};
+const SEGN={region:"Región",edad:"Edad",sexo:"Sexo",educacion:"Educación",distribucion:"Núcleo y rechazo"};
+function segRender(){if(!needD("segchart"))return;
+  document.getElementById("segdim").innerHTML=Object.entries(SEGN).map(([k,n])=>`<button data-v="${k}" aria-pressed="${k==SS.dim}">${n}</button>`).join("");
+  document.querySelectorAll("#segdim button").forEach(b=>b.onclick=()=>{SS.dim=b.dataset.v;segRender()});
+  const S=ICGD.seg[SS.dim];const series=Object.entries(S).map(([k,pts],i)=>({c:PAL[i%PAL.length],w:2,label:k.split(" (")[0],pts:pts.map(p=>[new Date(p[0]+"-15"),p[1]])}));
+  lineChart(document.getElementById("segchart"),series,{ymax:SS.dim=="distribucion"?80:80,h:380});
+  document.getElementById("seglegend").innerHTML=series.map(s=>`<span><i style="background:${s.c}"></i>${s.label}</span>`).join("");
+  document.getElementById("segnote").textContent=SS.dim=="distribucion"?"Núcleo: porcentaje que responde a favor del gobierno en 4 o 5 de las 5 preguntas. Rechazo total: en ninguna. Promedios trimestrales.":"Promedios trimestrales del índice (0–100). Antes de 2008 la encuesta solo cubría AMBA, Córdoba, Rosario, Mendoza y Tucumán."}
+
+function icgdRender(){[icgElecRender,lunaRender,compRender,regRender,segRender].forEach(f=>{try{f()}catch(e){console.error(e)}})}
+
+// ===== Participación: abstención, voto en blanco y nulo en el mapa electoral =====
+// PART[cargo][año][instancia] = {prov:{pc:[E,Ve,V,B,N,BN]}, dep:{link:[...]}, nat:[...]}
+const PM={abst:{n:"Abstención",c:"#B5651D",d:"porcentaje de los inscriptos en el padrón que no fue a votar"},blanco:{n:"Voto en blanco",c:"#2A7AB8",d:"porcentaje de los que fueron a votar que votó en blanco"},nulo:{n:"Voto nulo",c:"#C0392B",d:"porcentaje de los que fueron a votar que anuló el voto (incluye recurridos e impugnados)"},suma:{n:"Abstención + blanco + nulo",c:"#0E5A6E",d:"porcentaje del padrón que no eligió a ningún candidato: no fue a votar, votó en blanco o anuló"}};
+function pData(){if(typeof PART=="undefined")return null;const c=PART[S.cargo],y=c&&c[S.anio];return y&&y[S.inst]||null}
+function pMeas(a,m){if(!a)return null;const[E,Ve,V,B,N,BN]=a;const bn=(B!=null&&N!=null)?B+N:BN;
+  if(m=="abst")return E>0?100*(1-Ve/E):null;
+  if(m=="blanco")return B!=null&&V>0?100*B/V:null;
+  if(m=="nulo")return N!=null&&V>0?100*N/V:null;
+  if(m=="suma"){if(!(E>0)||bn==null||!V)return null;const ab=1-Ve/E;return 100*(ab+(1-ab)*bn/V)}return null}
+function pAvail(m){const d=pData();if(!d)return false;return pMeas(d.nat,m)!=null}
+function pVal(code,lvl){const d=pData();return d?pMeas(d[lvl][code],S.medir):null}
+let PDOM=[0,1];
+function pDomain(){const d=pData();if(!d){PDOM=[0,1];return}const v=Object.values(d[S.nivel]).map(a=>pMeas(a,S.medir)).filter(x=>x!=null).sort((a,b)=>a-b);if(!v.length){PDOM=[0,1];return}
+  const q=p=>v[Math.min(v.length-1,Math.max(0,Math.round(p*(v.length-1))))];let lo=Math.floor(q(.05)),hi=Math.ceil(q(.95));if(hi-lo<2)hi=lo+2;PDOM=[lo,hi]}
+function pColor(v){if(v==null)return null;const t=Math.max(0,Math.min(1,(v-PDOM[0])/(PDOM[1]-PDOM[0])));return mix(PM[S.medir].c,.1+.9*t)}
+function pFill(code,lvl){const c=pColor(pVal(code,lvl));if(c)return c;if(lvl=="dep"&&pVal(code.slice(0,2),"prov")!=null)return"url(#hatch-"+code.slice(0,2)+")";return"#E9EEF2"}
+function pDefs(d){Object.keys(PROVN).forEach(pc=>{const c=pColor(pVal(pc,"prov"));if(!c)return;const p=d.append("pattern").attr("id","hatch-"+pc).attr("patternUnits","userSpaceOnUse").attr("width",5).attr("height",5).attr("patternTransform","rotate(45)");p.append("rect").attr("width",5).attr("height",5).attr("fill","#fff");p.append("rect").attr("width",2.2).attr("height",5).attr("fill",c)})}
+const pf=x=>x==null?"—":x.toFixed(1).replace(".",",")+" %";
+function pRows(a){if(!a)return null;const[E,Ve,V,B,N,BN]=a;const r=[];
+  const ab=pMeas(a,"abst");if(ab!=null)r.push(["Participación",100-ab,"#74ACDF",`${Ve.toLocaleString("es-AR")} votantes de ${E.toLocaleString("es-AR")} inscriptos`],["Abstención",ab,PM.abst.c,`${(E-Ve).toLocaleString("es-AR")} no votaron`]);
+  if(B!=null)r.push(["En blanco",100*B/V,PM.blanco.c,`${B.toLocaleString("es-AR")} votos · ${pf(100*B/V)} de los votantes`]);
+  if(N!=null)r.push(["Nulos",100*N/V,PM.nulo.c,`${N.toLocaleString("es-AR")} votos (con recurridos e impugnados)`]);
+  if(B==null&&N==null&&BN!=null)r.push(["Blancos y nulos (juntos)",100*BN/V,PM.nulo.c,`${BN.toLocaleString("es-AR")} votos · la fuente no los separa`]);
+  const s=pMeas(a,"suma");if(s!=null)r.push(["Los tres juntos",s,PM.suma.c,"sobre el padrón: no eligió a ningún candidato"]);
+  return r}
+function pBars(r,el){el.innerHTML=r.map(([n,p,c,d])=>`<div class="row"><div class="nm"><i style="background:${c}"></i><span>${n}</span></div><div class="pc">${pf(p)}</div><div class="tr"><b style="width:${Math.min(100,p)}%;background:${c}"></b></div><div class="vt">${d}</div></div>`).join("")}
+function pTip(code,lvl){const d=pData();const a=d&&d[lvl][code];let h=`<b>${label(code,lvl)}</b>`;const v=pMeas(a,S.medir);
+  if(v!=null)return h+`<br>${PM[S.medir].n}: ${pf(v)}`+(S.medir!="abst"&&pMeas(a,"abst")!=null?`<br><small>Abstención ${pf(pMeas(a,"abst"))}</small>`:"");
+  if(lvl=="dep"&&pVal(code.slice(0,2),"prov")!=null)return h+"<br>Sin dato por departamento; rayado con el valor de la provincia";return h+"<br>Sin datos"}
+function pPanel(){const d=pData(),m=PM[S.medir];
+  document.getElementById("ptit").textContent=`${TIT[S.cargo]} ${S.anio} · ${m.n}`;
+  const fe=(FECHAS[S.anio]||{})[S.inst];document.getElementById("psub").textContent=S.cargo=="gobernadores"?"Elecciones provinciales del ciclo · total de las provincias con datos":`${INSN[S.inst]||INSX[S.inst]||""}${fe?" · "+fe:""} · total país`;
+  const pb=document.getElementById("pbars"),lg=document.getElementById("plg");
+  if(!d){pb.innerHTML='<p class="muted">No hay datos de padrón, blancos ni nulos para esta elección.</p>';lg.innerHTML="";document.getElementById("pnote").textContent="";return}
+  pBars(pRows(d.nat),pb);
+  const tops=Object.entries(d.prov).map(([p,a])=>[p,pMeas(a,S.medir)]).filter(x=>x[1]!=null).sort((a,b)=>b[1]-a[1]);
+  if(tops.length)pb.insertAdjacentHTML("beforeend",`<details class="gl"><summary>Ranking por provincia (${m.n.toLowerCase()})</summary><table>${tops.map(([p,v],i)=>`<tr><td>${i+1}. ${PROVN[p]}</td><td class="n">${pf(v)}</td></tr>`).join("")}</table></details>`);
+  lg.innerHTML=`<span style="display:flex;align-items:center;gap:6px;width:100%"><small>${PDOM[0]} %</small><i style="flex:1;height:10px;border-radius:3px;background:linear-gradient(90deg,${mix(m.c,.1)},${m.c})"></i><small>${PDOM[1]} % o más</small></span><span><i style="background:repeating-linear-gradient(45deg,#fff 0 2px,${mix(m.c,.6)} 2px 4px)"></i>Departamento sin dato propio (valor de la provincia)</span>`;
+  let n=`${m.n}: ${m.d}. La abstención se mide sobre el padrón; el blanco y el nulo, sobre los que fueron a votar; «los tres juntos» suma todo sobre el padrón. `;
+  n+=S.anio>=2011&&S.cargo!="gobernadores"?"Fuente: DINE, escrutinio provisorio (las cifras definitivas pueden diferir en un punto). ":S.anio>=1983?"Fuente: base de Ernesto Calvo (1983–1999), PolAr (2003–2009) y atlas electorales, sin corregir. ":"Fuente: transcripciones de los atlas y estadísticas oficiales de la época. ";
+  if(S.cargo=="presidente"&&S.anio==2023&&S.inst=="general")n+="2023: la base por departamento no trae los nulos; se calculan como votantes menos votos válidos (descontando al Frente de Izquierda con su peso provincial). ";
+  if(S.anio==2001)n+="2001 fue el «voto bronca»: blancos y nulos récord. Salta y Jujuy no tienen padrón confiable en la base. ";
+  if(S.anio<1912)n+="Antes de la ley Sáenz Peña el voto no era obligatorio ni secreto. ";
+  if(!pAvail("abst"))n+="Esta elección no trae padrón en la base: no se puede calcular la abstención. ";
+  if(S.cargo=="gobernadores"&&S.anio>=2011)n+="Gobernadores 2011–2023: la base no trae el padrón. ";
+  if(S.cargo=="senadores")n+="Solo votan las provincias que renuevan senadores ese año. ";
+  document.getElementById("pnote").textContent=n.trim()}
+function pUnit(){const el=document.getElementById("punit");if(!S.sel){el.className="unit empty";el.textContent="Tocá una provincia o un departamento en el mapa.";return}
+  const lvl=S.sel.length==2?"prov":"dep",d=pData();el.className="unit";const a=d&&d[lvl][S.sel];el.innerHTML=`<h3>${label(S.sel,lvl)}</h3><div class="bars"></div>`;
+  const r=pRows(a);if(r&&r.length)pBars(r,el.querySelector(".bars"));else el.innerHTML+="<p>Sin datos de participación para este distrito en esta elección.</p>"}
+function pSync(){document.querySelectorAll("#medir button").forEach(b=>{const v=b.dataset.v;b.setAttribute("aria-pressed",v==S.medir);b.disabled=v!="votos"&&!pAvail(v)});document.querySelectorAll("#vista button").forEach(b=>b.disabled=S.medir!="votos")}
+
+// ===== Evolución elección por elección, 1983 a hoy =====
+const EVS=[
+ {k:"ofi",n:"Oficialismo",c:"#F6B40E",g:"Fuerzas",v:r=>r.ofi&&r.ofi.v,on:1,w:3.2},
+ {k:"opo",n:"Principal oposición",c:"#14213D",g:"Fuerzas",v:r=>r.opo&&r.opo.v,on:1,w:3.2},
+ {k:"I",n:"Izquierda",c:"#E2434B",g:"Tendencia",v:r=>r.I,on:0},
+ {k:"C",n:"Centro",c:"#8E7CC3",g:"Tendencia",v:r=>r.C,on:0},
+ {k:"D",n:"Derecha",c:"#00897B",g:"Tendencia",v:r=>r.D,on:0},
+ {k:"abst",n:"Abstención",c:"#B5651D",g:"Participación",v:r=>r.abst,on:1,dash:1},
+ {k:"bl",n:"En blanco",c:"#2A7AB8",g:"Participación",v:r=>r.bl,on:0,dash:1},
+ {k:"nul",n:"Nulo",c:"#D81B60",g:"Participación",v:r=>r.nul,on:0,dash:1},
+ {k:"suma",n:"Los tres juntos",c:"#0E5A6E",g:"Participación",v:r=>r.suma,on:1,dash:1}];
+let EVPB=true;const EVON={};EVS.forEach(s=>EVON[s.k]=!!s.on);
+function evolRender(){if(typeof EVOL=="undefined")return;const el=document.getElementById("evol");
+  if(typeof TEND!="undefined"){["I","C","D"].forEach(k=>{const s=EVS.find(x=>x.k==k);if(TEND[k])s.c=TEND[k].c})}
+  document.getElementById("evolsel").innerHTML=["Fuerzas","Tendencia","Participación"].map(g=>`<span class="evg"><small>${g}</small>${EVS.filter(s=>s.g==g).map(s=>`<button data-k="${s.k}" aria-pressed="${EVON[s.k]}" style="--c:${s.c}"><i></i>${s.n}</button>`).join("")}</span>`).join("")+`<span class="evg"><small>Elecciones</small><button data-k="_pb" aria-pressed="${EVPB}" style="--c:#14213D"><i></i>Sumar PASO y balotaje</button></span>`;
+  document.querySelectorAll("#evolsel button").forEach(b=>b.onclick=()=>{if(b.dataset.k=="_pb")EVPB=!EVPB;else EVON[b.dataset.k]=!EVON[b.dataset.k];evolRender()});
+  const nw=el.clientWidth<600,W=nw?420:960,H=nw?440:420,fs=nw?15:12,L=nw?34:40,R=nw?14:20,T=18,B=48;const RW=EVOL.filter(r=>EVPB||r.inst=="general"),tf=r=>{const d=new Date(r.f+"T12:00");return d.getFullYear()+(d-new Date(d.getFullYear(),0,1))/31557600000},y0=tf(RW[0])-.3,y1=tf(RW[RW.length-1])+.3;
+  const x=r=>L+(W-L-R)*(tf(r)-y0)/(y1-y0),yy=v=>T+(H-T-B)*(1-v/100);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolución de cada elección desde 1983">`;
+  for(let v=0;v<=100;v+=20)s+=`<line x1="${L}" x2="${W-R}" y1="${yy(v)}" y2="${yy(v)}" stroke="#EEF3F8"/><text x="${L-6}" y="${yy(v)+4}" font-size="${fs}" text-anchor="end" fill="#5B6B7C">${v}</text>`;
+  RW.filter(r=>r.inst=="general").forEach(r=>{const X=x(r),pr=r.tipo=="Presidente";s+=`<line x1="${X}" x2="${X}" y1="${T}" y2="${H-B}" stroke="${pr?"#E3EDF7":"#F5F8FB"}" stroke-width="${pr?2:1}"/>`;
+    if(!nw||((r.y-1983)%8==0&&r.y<2022)||r.y==2025)s+=`<text x="${X}" y="${H-B+16}" font-size="${nw?14:11.5}" text-anchor="middle" fill="#14213D" ${pr?'font-weight="700"':""}>${nw?"'"+String(r.y).slice(2):r.y}</text>`;
+    s+=`<text x="${X}" y="${H-B+31}" font-size="${nw?12:10}" text-anchor="middle" fill="#5B6B7C">${pr?"P":"D"}</text>`});
+  EVS.filter(se=>EVON[se.k]).forEach(se=>{const pts=RW.map(r=>[r,se.v(r)]).filter(p=>p[1]!=null);let d="",prev=null;
+    pts.forEach(([r,v])=>{d+=(prev&&RW.indexOf(r)-RW.indexOf(prev)==1?"L":"M")+x(r).toFixed(1)+","+yy(v).toFixed(1);prev=r});
+    s+=`<path d="${d}" fill="none" stroke="${se.c}" stroke-width="${se.w||2.2}" ${se.dash?'stroke-dasharray="6 4"':""}/>`;
+    pts.forEach(([r,v])=>{const X=x(r),Y=yy(v),z=nw?3.4:4.2;s+=r.inst=="paso"?`<path d="M${X},${Y-z-1}L${X+z+1},${Y+z}L${X-z-1},${Y+z}Z" fill="#fff" stroke="${se.c}" stroke-width="1.8"/>`:r.inst=="balotaje"?`<rect x="${X-z}" y="${Y-z}" width="${2*z}" height="${2*z}" fill="${se.c}"/>`:r.tipo=="Presidente"?`<circle cx="${X}" cy="${Y}" r="${z}" fill="${se.c}"/>`:`<circle cx="${X}" cy="${Y}" r="${z-.4}" fill="#fff" stroke="${se.c}" stroke-width="2"/>`})});
+  RW.forEach((r,i)=>{const a=i?(x(RW[i-1])+x(r))/2:L,b=i<RW.length-1?(x(r)+x(RW[i+1]))/2:W-R;s+=`<rect class="evh" data-i="${i}" x="${a}" y="${T}" width="${b-a}" height="${H-T-B}" fill="transparent"/>`});
+  el.innerHTML=s+"</svg>";
+  const IN={paso:"PASO presidencial",balotaje:"Balotaje presidencial"};const show=(i,e)=>{const r=RW[i];const f=v=>v==null?"—":fnum(v)+" %";
+    const h=`<b>${r.y} · ${IN[r.inst]||(r.tipo=="Presidente"?"Presidente (1.ª vuelta)":"Diputados nacionales")}</b><br><small>Gobierno: ${r.gob}</small><table class="evt">`+
+     (r.ofi?`<tr><td><i style="background:#F6B40E"></i>Oficialismo: ${r.ofi.n}</td><td>${f(r.ofi.v)}</td></tr><tr><td><i style="background:#14213D"></i>Oposición: ${r.opo.n}</td><td>${f(r.opo.v)}</td></tr>`:`<tr><td colspan="2">Sin oficialismo: salida del gobierno militar</td></tr>`)+
+     `<tr><td>Izquierda · Centro · Derecha</td><td>${fnum(r.I)} · ${fnum(r.C)} · ${fnum(r.D)}</td></tr><tr><td>Abstención</td><td>${f(r.abst)}</td></tr><tr><td>En blanco · Nulo</td><td>${f(r.bl)} · ${f(r.nul)}</td></tr><tr><td>Los tres juntos</td><td>${f(r.suma)}</td></tr></table>`;
+    document.getElementById("evoldet").innerHTML=h;document.querySelectorAll("#evol .evh").forEach(q=>q.setAttribute("fill",q.dataset.i==i?"rgba(116,172,223,.12)":"transparent"))};
+  document.querySelectorAll("#evol .evh").forEach(q=>{q.addEventListener("mouseenter",()=>show(+q.dataset.i));q.addEventListener("click",()=>show(+q.dataset.i))});
+  show(RW.length-1);
+  document.getElementById("evoltab").innerHTML=`<table><tr><th>Año</th><th>Elección</th><th>Oficialismo</th><th></th><th>Principal oposición</th><th></th><th>Izq.</th><th>Centro</th><th>Der.</th><th>Abst.</th><th>Blanco</th><th>Nulo</th><th>Los tres</th></tr>${RW.map(r=>`<tr><td>${r.y}</td><td>${IN[r.inst]||r.tipo}</td><td>${r.ofi?r.ofi.n:"—"}</td><td class="n">${r.ofi?fnum(r.ofi.v):""}</td><td>${r.opo?r.opo.n:"—"}</td><td class="n">${r.opo?fnum(r.opo.v):""}</td><td class="n">${fnum(r.I)}</td><td class="n">${fnum(r.C)}</td><td class="n">${fnum(r.D)}</td><td class="n">${r.abst!=null?fnum(r.abst):"—"}</td><td class="n">${r.bl!=null?fnum(r.bl):"—"}</td><td class="n">${r.nul!=null?fnum(r.nul):"—"}</td><td class="n">${r.suma!=null?fnum(r.suma):"—"}</td></tr>`).join("")}</table>`}
+
+const PS={cargo:"presidente",inst:"general",nivel:"prov",sel:null};
+function projVals(code,lvl){if(typeof PROY=="undefined")return null;const pc=code.slice(0,2);
+  if(PS.cargo=="senadores"&&!PROY.senado2027.includes(pc))return null;if(PS.cargo=="gobernadores"&&!PROY.gob2027.includes(pc))return null;
+  if(PS.inst=="balotaje"&&PS.cargo=="presidente"){const b=PROY.balotaje&&PROY.balotaje[lvl][code];return b==null?null:{LLA:b,Peronismo:+(100-b).toFixed(1)}}
+  return PROY.general&&PROY.general[lvl][code]||null}
+function projRender(){const el=document.getElementById("pmap");if(typeof PROY=="undefined"||!PROY.general){document.getElementById("ppnote").textContent="La proyección se calcula cuando estén cargadas las encuestas.";return}
+  const lvl=PS.nivel,feats=lvl=="prov"?prov.features:dep.features,idf=f=>lvl=="prov"?f.properties.PROV_COD:f.properties.LINK_;
+  const svg=d3.select(el);svg.selectAll("*").remove();
+  const fillP=c=>{const v=projVals(c,lvl);if(!v)return"#E9EEF2";const r=Object.entries(v).sort((a,b)=>b[1]-a[1]);const m=r[0][1]-(r[1]?r[1][1]:0);return mix(PROY.colores[r[0][0]],Math.max(.3,Math.min(1,.3+m/30)))};
+  svg.append("g").selectAll("path").data(feats).join("path").attr("d",path).attr("fill",f=>fillP(idf(f))).attr("stroke","#fff").attr("stroke-width",.35).style("cursor","pointer").classed("sel",f=>PS.sel==idf(f))
+   .on("mousemove",(e,f)=>{const v=projVals(idf(f),lvl);tip.style.display="block";tip.style.left=Math.min(e.clientX+12,innerWidth-270)+"px";tip.style.top=e.clientY+12+"px";tip.innerHTML=`<b>${label(idf(f),lvl)}</b><br>`+(v?Object.entries(v).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([k,x])=>`${k}: ${fnum(x)} %`).join("<br>"):"No elige este cargo en 2027")})
+   .on("mouseleave",()=>tip.style.display="none").on("click",(e,f)=>{PS.sel=idf(f);projRender()});
+  if(lvl=="dep")svg.append("g").selectAll("path").data(prov.features).join("path").attr("d",path).attr("fill","none").attr("stroke","#14213D").attr("stroke-width",.7).style("pointer-events","none");
+  const T=PS.cargo=="presidente"?"Presidente":PS.cargo=="gobernadores"?"Gobernadores":PS.cargo=="diputados"?"Diputados":"Senadores";
+  document.getElementById("pptit").textContent=`${T} 2027 · proyección`;
+  let nat=PS.inst=="balotaje"&&PS.cargo=="presidente"&&PROY.balotaje?{LLA:PROY.balotaje.objetivo,Peronismo:+(100-PROY.balotaje.objetivo).toFixed(1)}:PROY.objetivo;
+  document.getElementById("ppsub").textContent=PS.inst=="balotaje"?"Segunda vuelta Milei contra el peronismo · total país":"Primera vuelta · estimación nacional por fuerza";
+  const pb=document.getElementById("ppbars");pb.innerHTML=Object.entries(nat).sort((a,b)=>b[1]-a[1]).map(([k,p])=>`<div class="row"><div class="nm"><i style="background:${PROY.colores[k]}"></i><span>${k=="PRO_JxC"?"PRO / Juntos por el Cambio":k}</span></div><div class="pc">${fnum(p)} %</div><div class="tr"><b style="width:${p}%;background:${PROY.colores[k]}"></b></div></div>`).join("");
+  const u=document.getElementById("ppunit");if(PS.sel){const v=projVals(PS.sel,PS.sel.length==2?"prov":"dep");const pm=PS.sel.length==2?4:7;u.className="unit";u.innerHTML=`<h3>${label(PS.sel,PS.sel.length==2?"prov":"dep")}</h3>`+(v?Object.entries(v).sort((a,b)=>b[1]-a[1]).map(([k,x])=>`<div style="display:flex;justify-content:space-between;gap:8px;font-size:.92rem;margin:3px 0"><span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${PROY.colores[k]};margin-right:6px"></i>${k}</span><b class="num">${fnum(x)} % <small style="color:#5B6B7C">(${fnum(Math.max(0,x-pm))}–${fnum(x+pm)})</small></b></div>`).join(""):"<p>No elige este cargo en 2027.</p>")+(PS.cargo=="gobernadores"&&GOBC["2023"].prov[PS.sel.slice(0,2)]?`<p class="muted">Gobierna hoy: ${GOBC["2023"].prov[PS.sel.slice(0,2)].winner} (${(FAMS[GOBC["2023"].prov[PS.sel.slice(0,2)].family]||FAMS.OTR).n}). En elecciones provinciales pesan mucho el oficialismo local y los candidatos: tomalo como orientación.</p>`:"")}
+  const e=PROY.encuestas;document.getElementById("ppnote").innerHTML=`Base: diputados 2025 (40 %), presidente 2023 (30 %), diputados 2021 (20 %) y presidente 2019 (10 %) por departamento, llevados al promedio de ${e.fuerzas[0]||e.candidatos[0]} encuestas recientes${PROY.icg?` y ajustados con el índice de confianza (${PROY.icg.mes}: el modelo histórico da ${fnum(PROY.icg.pred)} % al oficialismo; pesa 30 %)`:""}${PROY.ajuste_regional?`. Además, cada región se corrige según cuánto cambió su confianza desde octubre de 2025 respecto del país (La Libertad Avanza: ${Object.entries(PROY.ajuste_regional).map(([r,v])=>`${r} ${v>0?"+":""}${fnum(v)}`).join(", ")} puntos; el total nacional no cambia)`:""}. Rango orientativo: ±4 puntos por provincia y ±7 por departamento. ${PS.cargo=="senadores"?"En 2027 eligen senadores Catamarca, Chubut, Córdoba, Corrientes, La Pampa, Mendoza, Santa Fe y Tucumán. ":""}${PS.cargo=="gobernadores"?"Corrientes y Santiago del Estero eligieron en 2025. ":""}La PASO, si se hace, se proyecta igual que la primera vuelta.`;
+  document.querySelectorAll("#pinst button").forEach(b=>{b.disabled=b.dataset.v=="balotaje"&&(PS.cargo!="presidente"||!PROY.balotaje);b.setAttribute("aria-pressed",b.dataset.v==PS.inst)})}
+[["pcargo","cargo"],["pinst","inst"],["pnivel","nivel"]].forEach(([id,k])=>document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{PS[k]=b.dataset.v;if(PS.cargo!="presidente")PS.inst="general";PS.sel=null;document.querySelectorAll(`#${id} button`).forEach(x=>x.setAttribute("aria-pressed",x==b));projRender()}));
+
+render();try{encRender();icgRender();if(typeof icgdRender=='function')icgdRender();if(typeof evolRender=='function')evolRender();if(typeof projRender=='function')projRender()}catch(e){console.error(e)}
+</script></body></html>

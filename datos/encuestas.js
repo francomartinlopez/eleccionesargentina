@@ -1,0 +1,1604 @@
+const ENC=[
+ {
+  "fecha": "2024-03-22",
+  "fecha_aprox": false,
+  "encuestadora": "Analogías",
+  "muestra": 2506,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 39.6,
+   "Massa": 38,
+   "Blanco": 8.3,
+   "Indecisos": 14.1
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/segun-una-encuesta-si-se-repitiera-hoy-el-balotaje-entre-massa-y-milei-la-diferencia-seria-menor-a-dos-puntos.phtml",
+  "nota": "repetición hipotética del balotaje 2023"
+ },
+ {
+  "fecha": "2025-07-02",
+  "fecha_aprox": false,
+  "encuestadora": "Opina Argentina",
+  "muestra": 2281,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 42,
+   "Kicillof": 32,
+   "Schiaretti": 4,
+   "Manes": 3,
+   "Izquierda": 3,
+   "Otros": 6,
+   "Blanco": 6,
+   "Indecisos": 4
+  },
+  "fuente": "https://wiki.krisyotam.com/content/wikipedia_en_all_nopic_2026-03/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2025-11-27",
+  "fecha_aprox": false,
+  "encuestadora": "Isasi-Burdman",
+  "muestra": 1136,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 54,
+   "Kicillof": 18,
+   "Schiaretti": 3,
+   "Izquierda": 3,
+   "Otros": 5,
+   "Blanco/Indecisos": 17
+  },
+  "fuente": "https://wiki.krisyotam.com/content/wikipedia_en_all_nopic_2026-03/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2025-12-09",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 50,
+   "Kicillof": 38,
+   "Blanco": 11,
+   "Indecisos": 1
+  },
+  "fuente": "https://www.iprofesional.com/politica/444043-una-encuesta-ya-empezo-a-medir-las-presidenciales-2027-como-es-el-sondeo-milei-kicillof"
+ },
+ {
+  "fecha": "2025-12-09",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 43,
+   "Peronismo": 33,
+   "Provincias Unidas": 4,
+   "Otros": 11,
+   "Blanco": 2,
+   "Indecisos": 7
+  },
+  "fuente": "https://www.iprofesional.com/politica/444043-una-encuesta-ya-empezo-a-medir-las-presidenciales-2027-como-es-el-sondeo-milei-kicillof"
+ },
+ {
+  "fecha": "2025-12-13",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1503,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 34.9,
+   "Kicillof": 23.5,
+   "Macri": 6.7,
+   "Schiaretti": 4.8,
+   "Moreno": 5.1,
+   "Izquierda": 2.9,
+   "Gebel": 1.8,
+   "Otros": 9.1,
+   "Blanco/Indecisos": 11.2
+  },
+  "fuente": "https://wiki.krisyotam.com/content/wikipedia_en_all_nopic_2026-03/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-01-11",
+  "fecha_aprox": false,
+  "encuestadora": "Opina Argentina",
+  "muestra": 3590,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 44,
+   "Peronismo": 35,
+   "Izquierda": 4,
+   "Provincias Unidas": 4,
+   "Otros": 7,
+   "Blanco/Indecisos": 5
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-01-16",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 49,
+   "Kicillof": 35,
+   "Blanco": 9,
+   "Indecisos": 7
+  },
+  "fuente": "https://www.mdzol.com/politica/encuesta-2027-javier-milei-le-sacaria-14-puntos-axel-kicillof-un-eventual-balotaje-n1436072"
+ },
+ {
+  "fecha": "2026-01-16",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 43,
+   "Peronismo": 32,
+   "Provincias Unidas": 4,
+   "Otros": 11,
+   "Blanco": 4,
+   "Indecisos": 6
+  },
+  "fuente": "https://www.mdzol.com/politica/encuesta-2027-javier-milei-le-sacaria-14-puntos-axel-kicillof-un-eventual-balotaje-n1436072"
+ },
+ {
+  "fecha": "2026-02-15",
+  "fecha_aprox": true,
+  "encuestadora": "Alaska / Trespuntozero",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Massa": 50.4,
+   "Milei": 49.6
+  },
+  "fuente": "https://www.tiempodesanjuan.com/el-pais/encuesta-muestra-paridad-milei-y-massa-escenario-contrafactual-balotaje-quien-ganaria-n426532",
+  "nota": "votos válidos proyectados"
+ },
+ {
+  "fecha": "2026-02-15",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 2588,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 35.7,
+   "Kicillof": 22.5,
+   "Villarruel": 5.2,
+   "Schiaretti": 3.7,
+   "Moreno": 4.5,
+   "Izquierda": 4.2,
+   "Gebel": 0.8,
+   "Otros": 4.7,
+   "Blanco": 9.2,
+   "Indecisos": 9.5
+  },
+  "fuente": "https://wiki.krisyotam.com/content/wikipedia_en_all_nopic_2026-03/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-02-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 40,
+   "Kicillof": 33,
+   "Indecisos": 11
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-03-14",
+  "fecha_aprox": false,
+  "encuestadora": "Tendencias",
+  "muestra": 3417,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 38.1,
+   "Kicillof": 33,
+   "Izquierda": 11.4,
+   "Schiaretti": 4.8,
+   "Indecisos": 12.7
+  },
+  "fuente": "https://www.cronica.com.ar/politica/encuesta-si-las-elecciones-fueran-hoy-habria-ballotage-y-crece-la-izquierda-474/"
+ },
+ {
+  "fecha": "2026-03-15",
+  "fecha_aprox": true,
+  "encuestadora": "Alaska / Trespuntozero",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Massa": 52.1,
+   "Milei": 47.9
+  },
+  "fuente": "https://www.tiempodesanjuan.com/el-pais/encuesta-muestra-paridad-milei-y-massa-escenario-contrafactual-balotaje-quien-ganaria-n426532",
+  "nota": "votos válidos proyectados"
+ },
+ {
+  "fecha": "2026-03-15",
+  "fecha_aprox": true,
+  "encuestadora": "Delfos",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 46,
+   "Milei": 37.5
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/nueva-encuesta-miran-todos-quien-gana-hoy-balotaje-kicillof-milei-2026529121324"
+ },
+ {
+  "fecha": "2026-03-15",
+  "fecha_aprox": true,
+  "encuestadora": "Delfos",
+  "muestra": null,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 34.2,
+   "Kicillof": 33.4
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/elecciones-2027/javier-milei-complicado-para-la-reeleccion-lo-que-revelan-todas-las-encuestas-para-las-presidenciales-2027-20264923311"
+ },
+ {
+  "fecha": "2026-03-28",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 2015,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 28.3,
+   "Kicillof": 24.2,
+   "Bullrich": 7.8,
+   "Grabois": 6.7,
+   "Vidal": 5.4,
+   "Santoro": 4.7,
+   "Gebel": 3.2,
+   "Villarruel": 2.8,
+   "Pichetto": 1.4,
+   "Blanco": 5.3,
+   "Indecisos": 10.2
+  },
+  "fuente": "https://qpaso.ar/noticias/clarin/politica/nueva-encuesta-midio-presidencial-2027-milei-vs-bullrich-pj-frente_0_rCe7bgzQUW.html",
+  "nota": "escenario tipo PASO; Blanco incluye otro/nulo"
+ },
+ {
+  "fecha": "2026-04-14",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 3120,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 51.4,
+   "Milei": 33.1,
+   "Blanco": 13.1,
+   "Indecisos": 2.4
+  },
+  "fuente": "https://www.letrap.com.ar/politica/encuesta-una-consultora-cordoba-da-ganador-axel-kicillof-primera-vuelta-n5423261"
+ },
+ {
+  "fecha": "2026-04-14",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 3120,
+  "serie": "candidatos",
+  "valores": {
+   "Kicillof": 40.4,
+   "Milei": 29.6,
+   "Izquierda": 6.5,
+   "Schiaretti": 3.5
+  },
+  "fuente": "https://www.letrap.com.ar/politica/encuesta-una-consultora-cordoba-da-ganador-axel-kicillof-primera-vuelta-n5423261"
+ },
+ {
+  "fecha": "2026-04-14",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 3120,
+  "serie": "candidatos",
+  "valores": {
+   "Kicillof": 40.4,
+   "Milei": 29.6,
+   "Izquierda": 6.5,
+   "Schiaretti": 3.5,
+   "Otros": 8.1,
+   "Blanco": 7.0
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-04-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 37,
+   "Kicillof": 35,
+   "Indecisos": 13
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-05-05",
+  "fecha_aprox": false,
+  "encuestadora": "Opina Argentina",
+  "muestra": 3714,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 35,
+   "Peronismo": 34,
+   "Izquierda": 9,
+   "Provincias Unidas": 6
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-05-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1846,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 32.3,
+   "Peronismo": 36.0,
+   "PRO_JxC": 6.7,
+   "Izquierda": 5.6,
+   "Provincias Unidas": 2.9,
+   "Blanco/Indecisos": 16.0
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-05-15",
+  "fecha_aprox": false,
+  "encuestadora": "Equipo Mide",
+  "muestra": 1915,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 28,
+   "Kicillof": 22,
+   "Izquierda": 12,
+   "Macri": 8,
+   "Villarruel": 4,
+   "Massa": 3,
+   "Grabois": 3,
+   "Máximo Kirchner": 2,
+   "Gebel": 1,
+   "Lousteau": 1,
+   "Brito": 1,
+   "Melconian": 1,
+   "Larreta": 1
+  },
+  "fuente": "https://www.baenegocios.com/politica/javier-milei-supera-a-axel-kicillof-por-seis-puntos-si-las-elecciones-fueran-hoy/"
+ },
+ {
+  "fecha": "2026-05-15",
+  "fecha_aprox": false,
+  "encuestadora": "Equipo Mide",
+  "muestra": 1915,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 29,
+   "Kirchnerismo": 18,
+   "Peronismo no K": 14,
+   "Izquierda": 11,
+   "PRO_JxC": 8,
+   "UCR": 2,
+   "Provincias Unidas": 1
+  },
+  "fuente": "https://www.baenegocios.com/politica/javier-milei-supera-a-axel-kicillof-por-seis-puntos-si-las-elecciones-fueran-hoy/"
+ },
+ {
+  "fecha": "2026-05-15",
+  "fecha_aprox": true,
+  "encuestadora": "Synopsis",
+  "muestra": 1587,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 34.7,
+   "Peronismo": 28.9,
+   "Oposición no peronista": 18.3,
+   "Indecisos": 11.5,
+   "Blanco": 6.6
+  },
+  "fuente": "https://noticias.perfil.com/noticias/politica/la-encuesta-que-muestra-a-milei-con-serias-chances-de-ser-reelecto-en-2027.phtml",
+  "nota": "campo abril-mayo 2026"
+ },
+ {
+  "fecha": "2026-05-19",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 2689,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 48.8,
+   "Milei": 36.4,
+   "Blanco": 13.1
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/nueva-encuesta-miran-todos-quien-gana-hoy-balotaje-kicillof-milei-2026529121324"
+ },
+ {
+  "fecha": "2026-05-19",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 2689,
+  "serie": "candidatos",
+  "escenario": "1",
+  "valores": {
+   "Kicillof": 36.2,
+   "Milei": 31.4,
+   "Izquierda": 9.4,
+   "Schiaretti": 3.9,
+   "Otros": 10.4
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/nueva-encuesta-miran-todos-quien-gana-hoy-balotaje-kicillof-milei-2026529121324"
+ },
+ {
+  "fecha": "2026-05-19",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 2689,
+  "serie": "candidatos",
+  "escenario": "2",
+  "valores": {
+   "Kicillof": 36.6,
+   "Milei": 29.2,
+   "Macri": 9.6,
+   "Izquierda": 9.4
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/nueva-encuesta-miran-todos-quien-gana-hoy-balotaje-kicillof-milei-2026529121324"
+ },
+ {
+  "fecha": "2026-05-19",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 2689,
+  "serie": "candidatos",
+  "escenario": "3",
+  "valores": {
+   "Kicillof": 35.5,
+   "Milei": 28.7,
+   "Izquierda": 9.1,
+   "Macri": 8.8,
+   "Villarruel": 3.7,
+   "Schiaretti": 2.7
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/nueva-encuesta-miran-todos-quien-gana-hoy-balotaje-kicillof-milei-2026529121324"
+ },
+ {
+  "fecha": "2026-05-26",
+  "fecha_aprox": false,
+  "encuestadora": "Isasi-Burdman",
+  "muestra": 1976,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 54,
+   "Kicillof": 35,
+   "Indecisos": 11
+  },
+  "fuente": "https://eleconomista.com.ar/politica/milei-arrasaria-kicillof-2027-nueva-encuesta-revela-ventaja-demoledora-19-puntos-n95317"
+ },
+ {
+  "fecha": "2026-05-26",
+  "fecha_aprox": false,
+  "encuestadora": "Isasi-Burdman",
+  "muestra": 1976,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 40,
+   "Peronismo": 24
+  },
+  "fuente": "https://eleconomista.com.ar/politica/milei-arrasaria-kicillof-2027-nueva-encuesta-revela-ventaja-demoledora-19-puntos-n95317"
+ },
+ {
+  "fecha": "2026-05-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1829,
+  "serie": "candidatos",
+  "escenario": "1",
+  "valores": {
+   "Milei": 31,
+   "Kicillof": 27,
+   "Izquierda": 7,
+   "Schiaretti": 6,
+   "Blanco": 12,
+   "Indecisos": 17
+  },
+  "fuente": "https://www.iprofesional.com/politica/458415-encuestas-argentina-pusieron-alerta-milei-kicillof-activaron-grieta-politica"
+ },
+ {
+  "fecha": "2026-05-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1829,
+  "serie": "candidatos",
+  "escenario": "2",
+  "valores": {
+   "Milei": 29,
+   "Kicillof": 25,
+   "Izquierda": 7,
+   "Frigerio": 3,
+   "Gebel": 3,
+   "Blanco": 14,
+   "Indecisos": 18
+  },
+  "fuente": "https://www.iprofesional.com/politica/458415-encuestas-argentina-pusieron-alerta-milei-kicillof-activaron-grieta-politica"
+ },
+ {
+  "fecha": "2026-05-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1829,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 26,
+   "Peronismo": 23,
+   "Kirchnerismo": 9,
+   "PRO_JxC": 7,
+   "Izquierda": 5,
+   "UCR": 3,
+   "Otros": 6,
+   "Blanco": 8,
+   "Indecisos": 14
+  },
+  "fuente": "https://www.iprofesional.com/politica/458415-encuestas-argentina-pusieron-alerta-milei-kicillof-activaron-grieta-politica"
+ },
+ {
+  "fecha": "2026-05-31",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1645,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 28.8,
+   "Kicillof": 16.6,
+   "Massa": 5.6,
+   "Grabois": 1.3,
+   "Izquierda": 6.6,
+   "Villarruel": 4.8,
+   "Otros": 0.5,
+   "Blanco": 12.8
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-06-03",
+  "fecha_aprox": false,
+  "encuestadora": "Explanans",
+  "muestra": 7015,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 43.8,
+   "Milei": 42.9,
+   "Blanco": 7.6,
+   "Indecisos": 5.6
+  },
+  "fuente": "https://www.laprensa.com.ar/Segun-una-encuesta-Milei-ganaria-la-primera-vuelta-pero-Kicillof-se-impondria-por-decimas-en-un-eventual-balotaje-572829.note.aspx"
+ },
+ {
+  "fecha": "2026-06-03",
+  "fecha_aprox": false,
+  "encuestadora": "Explanans",
+  "muestra": 7015,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 38.2,
+   "Kicillof": 28,
+   "Macri": 5.2,
+   "Izquierda": 12.8,
+   "Otros": 5,
+   "Blanco": 2.8
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-06-30",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1360,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 37.7,
+   "Kicillof": 33.7
+  },
+  "fuente": "https://www.cronista.com/economia-politica/midieron-a-milei-y-kicillof-de-cara-a-2027-como-saldria-un-balotaje-entre-ambos-y-el-rol-del-factor-villarruel/"
+ },
+ {
+  "fecha": "2026-06-30",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1360,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 29.3,
+   "Kicillof": 17.2,
+   "Espacio nuevo": 10.4,
+   "Izquierda": 6.5,
+   "Villarruel": 6.1,
+   "Massa": 4.4,
+   "Grabois": 1.3,
+   "Uñac": 0.9,
+   "Blanco": 12.5,
+   "Indecisos": 11.4
+  },
+  "fuente": "https://www.cronista.com/economia-politica/midieron-a-milei-y-kicillof-de-cara-a-2027-como-saldria-un-balotaje-entre-ambos-y-el-rol-del-factor-villarruel/"
+ },
+ {
+  "fecha": "2026-07-08",
+  "fecha_aprox": false,
+  "encuestadora": "Universidad de San Andrés",
+  "muestra": 1000,
+  "serie": "fuerzas",
+  "valores": {
+   "Peronismo": 25,
+   "LLA": 24,
+   "Izquierda": 4,
+   "PRO_JxC": 4,
+   "Provincias Unidas": 3,
+   "Otros": 3,
+   "UCR": 2,
+   "Partidos provinciales": 1,
+   "No contesta": 5,
+   "Blanco": 4,
+   "No votaría": 3,
+   "Indecisos": 22
+  },
+  "fuente": "https://www.iprofesional.com/politica/460550-indecisos-pueden-inclinar-eleccion-partidos-tiemblan"
+ },
+ {
+  "fecha": "2026-07-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1817,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 39.9,
+   "Kicillof": 39.9,
+   "Blanco": 13.7,
+   "Indecisos": 6.5
+  },
+  "fuente": "https://www.iprofesional.com/politica/460550-indecisos-pueden-inclinar-eleccion-partidos-tiemblan"
+ },
+ {
+  "fecha": "2026-07-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1817,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 33.7,
+   "Kicillof": 32.1,
+   "Izquierda": 6.9,
+   "Otros": 10,
+   "Blanco": 13.5
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1817,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 34.8,
+   "Peronismo": 33.7,
+   "PRO_JxC": 7.4,
+   "Izquierda": 4.3,
+   "Provincias Unidas": 2.1,
+   "Blanco": 17.7
+  },
+  "fuente": "https://www.iprofesional.com/politica/460550-indecisos-pueden-inclinar-eleccion-partidos-tiemblan"
+ },
+ {
+  "fecha": "2026-07-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 41,
+   "Kicillof": 42,
+   "Indecisos": 17
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-07-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 42,
+   "Massa": 38,
+   "Indecisos": 20
+  },
+  "fuente": "https://www.lapoliticaonline.com/politica/segun-una-encuesta-kicillof-le-ganaria-a-milei-en-un-escenario-de-balotaje/"
+ },
+ {
+  "fecha": "2026-07-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "candidatos",
+  "escenario": "Kicillof",
+  "valores": {
+   "Milei": 31,
+   "Kicillof": 29,
+   "Izquierda": 11,
+   "Schiaretti": 8
+  },
+  "fuente": "https://www.lapoliticaonline.com/politica/segun-una-encuesta-kicillof-le-ganaria-a-milei-en-un-escenario-de-balotaje/"
+ },
+ {
+  "fecha": "2026-07-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "candidatos",
+  "escenario": "Massa",
+  "valores": {
+   "Milei": 31,
+   "Massa": 22,
+   "Izquierda": 15,
+   "Schiaretti": 8
+  },
+  "fuente": "https://www.lapoliticaonline.com/politica/segun-una-encuesta-kicillof-le-ganaria-a-milei-en-un-escenario-de-balotaje/"
+ },
+ {
+  "fecha": "2026-07-26",
+  "fecha_aprox": false,
+  "encuestadora": "DC Consultores",
+  "muestra": 1940,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 41.3,
+   "Peronismo": 24.1,
+   "Izquierda": 4.9,
+   "Provincias Unidas": 2.4,
+   "Otros": 14.6,
+   "Blanco/Indecisos": 12.6
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-26",
+  "fecha_aprox": false,
+  "encuestadora": "Rubikon Intel",
+  "muestra": 1156,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 30.7,
+   "Kicillof": 22.8,
+   "Macri": 8.3,
+   "Schiaretti": 3.5,
+   "Izquierda": 9.5,
+   "Blanco": 17.6
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-26",
+  "fecha_aprox": false,
+  "encuestadora": "Rubikon Intel",
+  "muestra": 1156,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 29.3,
+   "Peronismo": 26.2,
+   "PRO_JxC": 7.9,
+   "Izquierda": 6.8,
+   "UCR": 2.4,
+   "Blanco/Indecisos": 5
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-26",
+  "fecha_aprox": false,
+  "encuestadora": "Zuban Córdoba",
+  "muestra": 1500,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 28,
+   "Peronismo": 31.3,
+   "PRO_JxC": 6.8,
+   "Izquierda": 4.4,
+   "Provincias Unidas": 2.4,
+   "UCR": 2.3,
+   "Otros": 7.5,
+   "Blanco/Indecisos": 17.3
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-28",
+  "fecha_aprox": false,
+  "encuestadora": "AtlasIntel",
+  "muestra": 4080,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 38.7,
+   "Peronismo": 27.5,
+   "PRO_JxC": 6.5,
+   "Izquierda": 2.6,
+   "UCR": 3.9,
+   "Otros": 4,
+   "Blanco/Indecisos": 16.7
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-28",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1162,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 39.8,
+   "Kicillof": 36.3,
+   "Blanco": 12.1,
+   "Indecisos": 11.8
+  },
+  "fuente": "https://www.mdzol.com/politica/una-encuesta-revelo-las-chances-electorales-javier-milei-y-sus-competidores-el-2027-n1577033"
+ },
+ {
+  "fecha": "2026-07-28",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1139,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 30.5,
+   "Kicillof": 14.8,
+   "Massa": 6.4,
+   "Grabois": 1.4,
+   "Izquierda": 6.4,
+   "Villarruel": 5.3,
+   "Otros": 10.4,
+   "Blanco": 14.2
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-07-28",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 41,
+   "Kicillof": 40,
+   "Blanco": 11,
+   "Indecisos": 8
+  },
+  "fuente": "https://www.lacapital.com.ar/politica/una-nueva-encuesta-anticipa-gran-paridad-2027-y-revela-quien-ganaria-un-ajustado-balotaje-n10273557.html"
+ },
+ {
+  "fecha": "2026-07-28",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 32,
+   "Peronismo": 30,
+   "Izquierda": 10,
+   "PRO_JxC": 9,
+   "Provincias Unidas": 3,
+   "Otros": 7,
+   "Blanco": 3,
+   "Indecisos": 6
+  },
+  "fuente": "https://www.lacapital.com.ar/politica/una-nueva-encuesta-anticipa-gran-paridad-2027-y-revela-quien-ganaria-un-ajustado-balotaje-n10273557.html"
+ },
+ {
+  "fecha": "2026-07-31",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1252,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 44.8,
+   "Cristina": 39,
+   "Blanco": 11.7,
+   "Indecisos": 4.5
+  },
+  "fuente": "https://nden.com.ar/nota/37588/una-encuesta-ubica-primero-a-milei-pero-kicillof-queda-a-1-4-puntos-en-un-eventual-balotaje/"
+ },
+ {
+  "fecha": "2026-07-31",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1252,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 43,
+   "Kicillof": 41.6,
+   "Blanco": 6.6,
+   "Indecisos": 8.8
+  },
+  "fuente": "https://nden.com.ar/nota/37588/una-encuesta-ubica-primero-a-milei-pero-kicillof-queda-a-1-4-puntos-en-un-eventual-balotaje/"
+ },
+ {
+  "fecha": "2026-07-31",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1252,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 32.4,
+   "Cristina": 15.2,
+   "Kicillof": 14.7,
+   "Izquierda": 7.6,
+   "Villarruel": 6.4,
+   "Brito": 1.9,
+   "Otros": 6.3,
+   "Blanco": 5.9,
+   "Indecisos": 9.6
+  },
+  "fuente": "https://nden.com.ar/nota/37588/una-encuesta-ubica-primero-a-milei-pero-kicillof-queda-a-1-4-puntos-en-un-eventual-balotaje/"
+ },
+ {
+  "fecha": "2026-07-31",
+  "fecha_aprox": false,
+  "encuestadora": "OPSA (UBA)",
+  "muestra": 2895,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 34,
+   "Peronismo": 21,
+   "PRO_JxC": 7,
+   "Izquierda": 9,
+   "Otros": 15,
+   "Blanco/Indecisos": 8
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-08-11",
+  "fecha_aprox": false,
+  "encuestadora": "Universidad de San Andrés",
+  "muestra": 1000,
+  "serie": "fuerzas",
+  "valores": {
+   "Peronismo": 26,
+   "LLA": 24,
+   "Izquierda": 5,
+   "PRO_JxC": 5,
+   "Otros": 4,
+   "Partidos provinciales": 2,
+   "Provincias Unidas": 2,
+   "UCR": 1,
+   "Indecisos": 20,
+   "No contesta": 5,
+   "No votaría": 3,
+   "Blanco": 3
+  },
+  "fuente": "https://noticias.perfil.com/noticias/politica/la-encuesta-para-2027-que-arroja-un-empate-tecnico-y-un-alarmante-25-de-indecisos.phtml"
+ },
+ {
+  "fecha": "2026-08-12",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1548,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 36.3,
+   "Kicillof": 32.3,
+   "Izquierda": 7.7,
+   "Otros": 10.7,
+   "Blanco": 9.4
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-08-12",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1548,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 32.5,
+   "Peronismo": 36.6,
+   "PRO_JxC": 6.6,
+   "Izquierda": 2.7,
+   "Provincias Unidas": 4.2,
+   "Blanco/Indecisos": 17.4
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-08-15",
+  "fecha_aprox": true,
+  "encuestadora": "QSocial",
+  "muestra": null,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 40,
+   "Kicillof": 42,
+   "Indecisos": 18
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-08-18",
+  "fecha_aprox": false,
+  "encuestadora": "Synopsis",
+  "muestra": 1224,
+  "serie": "fuerzas",
+  "valores": {
+   "Peronismo": 35.7,
+   "LLA": 35.5,
+   "Izquierda": 7.1,
+   "PRO_JxC": 6.1,
+   "Provincias Unidas": 2.4,
+   "Otros": 5.3,
+   "Indecisos": 7.9
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-empate-tecnico-entre-el-peronismo-y-la-libertad-avanza-para-las-elecciones-2027.phtml"
+ },
+ {
+  "fecha": "2026-08-21",
+  "fecha_aprox": false,
+  "encuestadora": "Isasi-Burdman",
+  "muestra": 2055,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 34,
+   "Peronismo": 19,
+   "PRO_JxC": 10,
+   "Izquierda": 8,
+   "Provincias Unidas": 6,
+   "Otros": 3,
+   "Blanco/Indecisos": 16
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-08-24",
+  "fecha_aprox": false,
+  "encuestadora": "RDT Consultores",
+  "muestra": 1286,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 29.2,
+   "Kicillof": 18.3,
+   "Massa": 8.7,
+   "Grabois": 1.7,
+   "Izquierda": 4.7,
+   "Villarruel": 6.7,
+   "Gebel": 1,
+   "Otros": 3.1,
+   "Blanco": 13.3
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-08-29",
+  "fecha_aprox": false,
+  "encuestadora": "Tendencias",
+  "muestra": 4958,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 46.1,
+   "Milei": 37.4,
+   "Blanco": 7.3,
+   "No votaría": 5.8,
+   "Indecisos": 3.5
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/una-encuesta-muestra-un-cambio-en-la-intencion-de-voto-para-las-elecciones-2027.phtml"
+ },
+ {
+  "fecha": "2026-08-29",
+  "fecha_aprox": false,
+  "encuestadora": "Tendencias",
+  "muestra": 4958,
+  "serie": "candidatos",
+  "valores": {
+   "Kicillof": 33.7,
+   "Milei": 32.4,
+   "Izquierda": 10.2,
+   "Schiaretti": 6.6,
+   "Blanco": 7.4,
+   "Indecisos": 9.7
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/una-encuesta-muestra-un-cambio-en-la-intencion-de-voto-para-las-elecciones-2027.phtml"
+ },
+ {
+  "fecha": "2026-09-08",
+  "fecha_aprox": false,
+  "encuestadora": "Analogías",
+  "muestra": 2932,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 30.7,
+   "Peronismo": 31,
+   "Izquierda": 6.2,
+   "Provincias Unidas": 7.4,
+   "Blanco/Indecisos": 24.7
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-09-09",
+  "fecha_aprox": false,
+  "encuestadora": "Explanans",
+  "muestra": 7015,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 43.1,
+   "Milei": 41.9,
+   "Indecisos": 6.2,
+   "Blanco": 8.8
+  },
+  "fuente": "https://enredaccion.com.ar/encuesta-milei-podria-ganar-en-primera-vuelta-y-si-hubiera-balotaje-kicillof-pasaria-al-frente/"
+ },
+ {
+  "fecha": "2026-09-09",
+  "fecha_aprox": false,
+  "encuestadora": "Explanans",
+  "muestra": 7025,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 38.5,
+   "Kicillof": 24.0,
+   "Massa": 6.1,
+   "Macri": 3.8,
+   "Izquierda": 10.2,
+   "Otros": 8.3,
+   "Blanco": 3.0
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-09-09",
+  "fecha_aprox": false,
+  "encuestadora": "Opinaia",
+  "muestra": 1000,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 33,
+   "Peronismo": 29,
+   "PRO_JxC": 7,
+   "Izquierda": 6,
+   "Provincias Unidas": 5,
+   "Blanco/Indecisos": 19
+  },
+  "fuente": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+ },
+ {
+  "fecha": "2026-09-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1354,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 40.8,
+   "Kicillof": 40.2,
+   "Indecisos": 5.6
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-empate-tecnico-en-un-eventual-balotaje-entre-milei-y-kicillof-en-un-escenario-incierto.phtml"
+ },
+ {
+  "fecha": "2026-09-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1354,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 36.9,
+   "Kicillof": 32,
+   "Izquierda": 8.2,
+   "Pullaro": 4.3,
+   "Blanco": 9.3,
+   "Indecisos": 9.2
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-empate-tecnico-en-un-eventual-balotaje-entre-milei-y-kicillof-en-un-escenario-incierto.phtml"
+ },
+ {
+  "fecha": "2026-09-10",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1354,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 35,
+   "Peronismo": 31.9,
+   "PRO_JxC": 5.6,
+   "Izquierda": 5.5,
+   "Provincias Unidas": 3.5,
+   "Blanco": 18.5
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-empate-tecnico-en-un-eventual-balotaje-entre-milei-y-kicillof-en-un-escenario-incierto.phtml"
+ },
+ {
+  "fecha": "2026-09-15",
+  "fecha_aprox": false,
+  "encuestadora": "Synopsis",
+  "muestra": 1257,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 43.1,
+   "Kicillof": 42,
+   "Blanco": 11.9,
+   "Indecisos": 3
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-2027-libertad-avanza-y-el-peronismo-en-empate-tecnico.phtml"
+ },
+ {
+  "fecha": "2026-09-15",
+  "fecha_aprox": false,
+  "encuestadora": "Synopsis",
+  "muestra": 1257,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 43.1,
+   "Massa": 38.8,
+   "Blanco": 14.3,
+   "Indecisos": 3.8
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-2027-libertad-avanza-y-el-peronismo-en-empate-tecnico.phtml"
+ },
+ {
+  "fecha": "2026-09-15",
+  "fecha_aprox": false,
+  "encuestadora": "Synopsis",
+  "muestra": 1257,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 33.6,
+   "Peronismo": 32.7
+  },
+  "fuente": "https://www.perfil.com/noticias/nea/encuesta-2027-libertad-avanza-y-el-peronismo-en-empate-tecnico.phtml"
+ },
+ {
+  "fecha": "2026-09-17",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 42,
+   "Kicillof": 40,
+   "Blanco": 12,
+   "Indecisos": 6
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/elecciones-2027-una-encuesta-midio-a-milei-frente-a-kicillof-cristina-y-massa.phtml"
+ },
+ {
+  "fecha": "2026-09-17",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 42,
+   "Cristina": 39,
+   "Blanco": 14,
+   "Indecisos": 5
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/elecciones-2027-una-encuesta-midio-a-milei-frente-a-kicillof-cristina-y-massa.phtml"
+ },
+ {
+  "fecha": "2026-09-17",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 44,
+   "Massa": 39,
+   "Blanco": 14,
+   "Indecisos": 3
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/elecciones-2027-una-encuesta-midio-a-milei-frente-a-kicillof-cristina-y-massa.phtml"
+ },
+ {
+  "fecha": "2026-09-17",
+  "fecha_aprox": false,
+  "encuestadora": "Trends",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 35,
+   "Peronismo": 33,
+   "Izquierda": 8,
+   "PRO_JxC": 7,
+   "Provincias Unidas": 2,
+   "Otros": 4,
+   "Blanco": 4,
+   "Indecisos": 7
+  },
+  "fuente": "https://www.perfil.com/noticias/politica/elecciones-2027-una-encuesta-midio-a-milei-frente-a-kicillof-cristina-y-massa.phtml"
+ },
+ {
+  "fecha": "2026-09-19",
+  "fecha_aprox": false,
+  "encuestadora": "Zuban Córdoba",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "escenario": "2 (tres espacios)",
+  "valores": {
+   "Peronismo": 35.9,
+   "LLA": 35.1,
+   "Izquierda": 6.4,
+   "Indecisos": 22.6
+  },
+  "fuente": "https://eleconomista.com.ar/politica/milei-alcanza-636-desaprobacion-nuevos-datos-sobre-kicillof-elecciones-2027-n98457"
+ },
+ {
+  "fecha": "2026-09-19",
+  "fecha_aprox": false,
+  "encuestadora": "Zuban Córdoba",
+  "muestra": 2000,
+  "serie": "fuerzas",
+  "escenario": "1",
+  "valores": {
+   "Peronismo": 34,
+   "LLA": 30.1,
+   "PRO_JxC": 5.8,
+   "Izquierda": 4.6,
+   "Otros": 14.6,
+   "Indecisos": 10.9
+  },
+  "fuente": "https://eleconomista.com.ar/politica/milei-alcanza-636-desaprobacion-nuevos-datos-sobre-kicillof-elecciones-2027-n98457"
+ },
+ {
+  "fecha": "2026-09-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1650,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 42,
+   "Kicillof": 41,
+   "Indecisos": 16
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-09-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1650,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 31,
+   "Kicillof": 31,
+   "Izquierda": 7,
+   "Schiaretti": 6,
+   "Blanco": 9,
+   "Indecisos": 16
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-09-28",
+  "fecha_aprox": false,
+  "encuestadora": "QSocial",
+  "muestra": 1650,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 26,
+   "Peronismo": 23,
+   "Kirchnerismo": 13,
+   "PRO_JxC": 8,
+   "Izquierda": 5,
+   "UCR": 2,
+   "Blanco": 4,
+   "Otros": 4,
+   "Indecisos": 15
+  },
+  "fuente": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+ },
+ {
+  "fecha": "2026-10-13",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1231,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 41,
+   "Kicillof": 39.1,
+   "Blanco": 13.4,
+   "Indecisos": 6.5
+  },
+  "fuente": "https://www.letrap.com.ar/politica/javier-milei-le-saca-cinco-puntos-ventaja-axel-kicillof-primera-vuelta-pero-el-balotaje-sigue-abierto-n5427481"
+ },
+ {
+  "fecha": "2026-10-13",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1231,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 37,
+   "Kicillof": 31.6,
+   "Izquierda": 7.4,
+   "Pullaro": 4.3,
+   "Blanco": 10,
+   "Indecisos": 9.7
+  },
+  "fuente": "https://www.letrap.com.ar/politica/javier-milei-le-saca-cinco-puntos-ventaja-axel-kicillof-primera-vuelta-pero-el-balotaje-sigue-abierto-n5427481"
+ },
+ {
+  "fecha": "2026-10-13",
+  "fecha_aprox": false,
+  "encuestadora": "Proyección Consultores",
+  "muestra": 1231,
+  "serie": "fuerzas",
+  "valores": {
+   "LLA": 37.8,
+   "Peronismo": 35.9,
+   "PRO_JxC": 4.2,
+   "Provincias Unidas": 4.1,
+   "Izquierda": 2.9,
+   "Blanco": 15.1
+  },
+  "fuente": "https://www.letrap.com.ar/politica/javier-milei-le-saca-cinco-puntos-ventaja-axel-kicillof-primera-vuelta-pero-el-balotaje-sigue-abierto-n5427481"
+ },
+ {
+  "fecha": "2026-10-14",
+  "fecha_aprox": false,
+  "encuestadora": "Analogías",
+  "muestra": 2863,
+  "serie": "fuerzas",
+  "valores": {
+   "Peronismo": 31.6,
+   "LLA": 30.9,
+   "Izquierda": 8.6,
+   "Fuerza de gobernadores": 7.5,
+   "Indecisos": 21.4
+  },
+  "fuente": "https://www.cronista.com/economia-politica/midieron-a-milei-y-a-kicillof-para-las-elecciones-2027-quien-gana-un-balotaje-segun-la-ultima-encuesta/"
+ },
+ {
+  "fecha": "2026-10-19",
+  "fecha_aprox": false,
+  "encuestadora": "Zuban Córdoba",
+  "muestra": 1600,
+  "serie": "fuerzas",
+  "escenario": "1",
+  "valores": {
+   "Peronismo": 36.6,
+   "LLA": 31.5,
+   "PRO_JxC": 5.6,
+   "Izquierda": 5.5,
+   "Indecisos": 13
+  },
+  "fuente": "https://www.letrap.com.ar/politica/axel-kicillof-lidera-el-ranking-imagen-positiva-y-el-peronismo-aventaja-javier-milei-tres-puntos-n5427699"
+ },
+ {
+  "fecha": "2026-10-19",
+  "fecha_aprox": false,
+  "encuestadora": "Zuban Córdoba",
+  "muestra": 1600,
+  "serie": "fuerzas",
+  "escenario": "2",
+  "valores": {
+   "Peronismo": 41,
+   "LLA": 37.8,
+   "Izquierda": 5.9,
+   "Indecisos": 15.3
+  },
+  "fuente": "https://www.letrap.com.ar/politica/axel-kicillof-lidera-el-ranking-imagen-positiva-y-el-peronismo-aventaja-javier-milei-tres-puntos-n5427699"
+ },
+ {
+  "fecha": "2026-10-20",
+  "fecha_aprox": false,
+  "encuestadora": "CELAG",
+  "muestra": 2000,
+  "serie": "balotaje",
+  "valores": {
+   "Kicillof": 42.7,
+   "Milei": 42.5,
+   "Ninguno": 14.8
+  },
+  "fuente": "https://noticias.perfil.com/noticias/politica/la-encuesta-que-marca-un-empate-tecnico-entre-milei-y-kicillof-en-el-ballotage.phtml"
+ },
+ {
+  "fecha": "2026-10-25",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1151,
+  "serie": "balotaje",
+  "valores": {
+   "Milei": 43.0,
+   "Kicillof": 40.6,
+   "Blanco": 8.6,
+   "Indecisos": 7.8
+  },
+  "fuente": "https://noticiasargentinas.com/politica/milei--kicillof-y-bullrich--que-revela-una-nueva-encuesta-sobre-las-elecciones-de-2027_a6ae1dc96be9be2610e8a308a"
+ },
+ {
+  "fecha": "2026-10-25",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1151,
+  "serie": "balotaje",
+  "valores": {
+   "Bullrich": 47.3,
+   "Kicillof": 40.1,
+   "Blanco": 5.7,
+   "Indecisos": 6.9
+  },
+  "fuente": "https://noticiasargentinas.com/politica/milei--kicillof-y-bullrich--que-revela-una-nueva-encuesta-sobre-las-elecciones-de-2027_a6ae1dc96be9be2610e8a308a"
+ },
+ {
+  "fecha": "2026-10-25",
+  "fecha_aprox": false,
+  "encuestadora": "CB Consultora",
+  "muestra": 1151,
+  "serie": "candidatos",
+  "valores": {
+   "Milei": 27.1,
+   "Kicillof": 16.5,
+   "Cristina": 12.1,
+   "Bullrich": 8.5,
+   "Izquierda": 7.3,
+   "Peronismo federal": 3.5,
+   "Pichetto": 0.9,
+   "Otros": 6.2,
+   "Blanco": 3.5,
+   "Indecisos": 14.4
+  },
+  "fuente": "https://www.cronica.com.ar/politica/milei-empata-con-kicillof-pero-bullrich-le-saca-7-puntos-que-dice-la-nueva-encuesta-para-2027/"
+ },
+ {
+  "fecha": "2026-10-26",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 4995,
+  "serie": "candidatos",
+  "escenario": "1 (todos los candidatos)",
+  "valores": {
+   "Kicillof": 36.4,
+   "Milei": 32.9,
+   "Macri": 4.8,
+   "Villarruel": 3.8,
+   "Brito": 0.6,
+   "Gebel": 0.5
+  },
+  "fuente": "https://perfil.com/politica/encuesta-2027-quien-gana-hoy-el-duelo-milei-kicillof-aHL8b3P2EP7u"
+ },
+ {
+  "fecha": "2026-10-26",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 4995,
+  "serie": "candidatos",
+  "escenario": "3 (sin Villarruel ni Macri)",
+  "valores": {
+   "Kicillof": 38.6,
+   "Milei": 35.2,
+   "Izquierda": 8.1,
+   "Schiaretti": 4.5,
+   "Blanco": 6
+  },
+  "fuente": "https://urgente24.com/actualidad/encuesta-3-escenarios-todos-pierde-milei-y-kicillof-capta-votos-villarruel-n635738"
+ },
+ {
+  "fecha": "2026-10-26",
+  "fecha_aprox": false,
+  "encuestadora": "Delfos",
+  "muestra": 4995,
+  "serie": "fuerzas",
+  "valores": {
+   "Peronismo": 37.5,
+   "LLA": 32.5,
+   "Izquierda": 6.1,
+   "PRO_JxC": 5.9,
+   "Provincias Unidas": 2.7,
+   "UCR": 1.8,
+   "Otros": 3.4,
+   "Blanco": 3.4,
+   "Indecisos": 6.7
+  },
+  "fuente": "https://urgente24.com/actualidad/encuesta-3-escenarios-todos-pierde-milei-y-kicillof-capta-votos-villarruel-n635738"
+ }
+];
