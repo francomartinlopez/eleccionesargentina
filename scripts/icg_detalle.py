@@ -51,6 +51,58 @@ for k, g in df.groupby('k'):
     moe[k] = round(1.96 * sd / np.sqrt(neff) * 20, 2)
 out['margen'] = moe
 
+# 1c. Proyección del índice de Milei hasta el final del mandato (mes 47 = noviembre de 2027, último mes completo).
+# Tres componentes con el mismo peso, elegidos por backtest sobre Cristina I, Cristina II, Macri y Fernández
+# (proyectando desde su mes 34 hasta el 48):
+#   tendencia: pendiente de los últimos 12 meses, amortiguada (0,9 por mes);
+#   análogos: cambio promedio de los otros gobiernos en el mismo tramo del mandato;
+#   expectativas: brecha entre la expectativa económica a un año (pregunta sit_ec, 0-100) y el índice;
+#                 históricamente esa brecha anticipa el cambio del índice en los 12 meses siguientes.
+df['exp'] = np.where(df.sit_ec == 1, 100, np.where(df.sit_ec == 3, 0, 50)).astype(float)
+df.loc[~df.sit_ec.isin([1, 2, 3]), 'exp'] = np.nan
+ge = df.dropna(subset=['exp']).assign(we=lambda x: x.exp * x.w).groupby('t')
+EXP = ge.we.sum() / ge.w.sum()
+ICGm = mon
+SER = {}
+for n, s0, e0, _c in GOV:
+    y, m = map(int, s0.split('-')); t0 = y * 12 + m - 1
+    y2, m2 = map(int, e0.split('-')); t1 = min(t0 + 48, y2 * 12 + m2, T + 1)
+    SER[n] = pd.DataFrame({'icg': [ICGm.get(t, np.nan) for t in range(t0, t1)], 'exp': [EXP.get(t, np.nan) for t in range(t0, t1)]}, index=range(1, t1 - t0 + 1))
+G = pd.DataFrame({'icg': ICGm, 'exp': EXP}).dropna(); G['f12'] = G.icg.shift(-12) - G.icg; G['gap'] = G.exp - G.icg
+BG = np.polyfit(G.dropna().gap, G.dropna().f12, 1)[0]
+PAST = [n for n, *_ in GOV if n != 'Milei']
+def comps(n, O, others):
+    s = SER[n].icg; base = s.loc[O - 2:O].mean(); H = range(O + 1, 49)
+    yy = s.loc[O - 11:O]; b = np.polyfit(yy.index, yy.values, 1)[0]
+    tr = {h: base + b * sum(0.9 ** k for k in range(1, h - O + 1)) for h in H}
+    an = {}
+    for h in H:
+        ds = [SER[o].icg.get(h) - SER[o].icg.loc[O - 2:O].mean() for o in others if h in SER[o].index and not pd.isna(SER[o].icg.get(h))]
+        an[h] = base + (np.mean(ds) if ds else 0)
+    gap = SER[n].exp.loc[O - 2:O].mean() - base
+    ex = {h: base + BG * gap * min(1, (h - O) / 12) for h in H}
+    return base, tr, an, ex
+OM = len(SER['Milei'])            # último mes con dato de Milei
+err = {}
+for n in ['Cristina I', 'Cristina II', 'Macri', 'Fernández']:
+    base, tr, an, ex = comps(n, OM, [o for o in PAST if o != n])
+    for h in range(OM + 1, 49):
+        a = SER[n].icg.get(h)
+        if a is None or pd.isna(a): continue
+        err.setdefault(h - OM, []).append((tr[h] + an[h] + ex[h]) / 3 - a)
+allerr = [(k, x) for k, v in err.items() for x in v]
+c = float(np.sqrt(np.mean([x * x / k for k, x in allerr])))     # error ~ c * raíz(horizonte)
+rmse = {k: c * np.sqrt(k) for k in range(1, 49)}
+base, tr, an, ex = comps('Milei', OM, PAST)
+mg = float(np.mean([v for v in list(moe.values())[-12:]]))
+pr = []
+for h in range(OM + 1, 48):
+    v = (tr[h] + an[h] + ex[h]) / 3; e = rmse.get(h - OM, max(rmse.values()))
+    pr.append({'mes': h, 'v': r1(v), 'ditella': r1(mg), 'modelo': r1(e), 'tendencia': r1(tr[h]), 'analogos': r1(an[h]), 'expectativas': r1(ex[h])})
+out['proyeccion_milei'] = {'desde_mes': OM, 'base': r1(base), 'puntos': pr, 'pesos': {'tendencia': 1 / 3, 'analogos': 1 / 3, 'expectativas': 1 / 3},
+    'brecha_expectativas': r1(SER['Milei'].exp.loc[OM - 2:OM].mean() - base), 'coef_brecha': round(float(BG), 3),
+    'backtest_error_medio': r1(float(np.mean([abs(x) for v in err.values() for x in v])))}
+
 # 2. Las cinco preguntas por gobierno (promedio del mandato, 0-100)
 COMP = [('eval_gob_rec','Evaluación general'),('benef_gob_rec','Gobierna para la mayoría'),('adm_gp_rec','Eficiencia del gasto'),
         ('cor_gob_rec','Honestidad'),('resol_prob_rec','Resuelve los problemas')]
