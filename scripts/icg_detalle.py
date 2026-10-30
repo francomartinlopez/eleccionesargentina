@@ -43,6 +43,14 @@ for n, s, e, c in GOV:
     luna.append({'n': n, 'c': c, 'v': [r1(mon[t]) for t in range(t0, t1) if t in mon.index]})
 out['luna'] = luna
 
+# 1b. Margen de error mensual (95 %, escala 0-100): 1,96 × desvío ponderado / raíz del n efectivo (Kish)
+moe = {}
+for k, g in df.groupby('k'):
+    w = g.w.values; x = g.ICG.values; m = np.average(x, weights=w)
+    neff = w.sum() ** 2 / (w ** 2).sum(); sd = np.sqrt(np.average((x - m) ** 2, weights=w))
+    moe[k] = round(1.96 * sd / np.sqrt(neff) * 20, 2)
+out['margen'] = moe
+
 # 2. Las cinco preguntas por gobierno (promedio del mandato, 0-100)
 COMP = [('eval_gob_rec','Evaluación general'),('benef_gob_rec','Gobierna para la mayoría'),('adm_gp_rec','Eficiencia del gasto'),
         ('cor_gob_rec','Honestidad'),('resol_prob_rec','Resuelve los problemas')]
