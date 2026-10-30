@@ -272,7 +272,12 @@ function fixState(){const ys=years();if(!ys.includes(+S.anio))S.anio=Math.max(..
 function seg(id,key,after){document.querySelectorAll(`#${id} button`).forEach(b=>{b.onclick=()=>{S[key]=b.dataset.v;after&&after();fixState();render()}})}
 seg("medir","medir");seg("cargo","cargo");seg("inst","inst");seg("nivel","nivel",()=>{S.sel=null});seg("vista","vista");seg("cvista","cvista");
 function syncSeg(){setTimeout(pSync,0);[["cargo","cargo"],["inst","inst"],["nivel","nivel"],["vista","vista"],["cvista","cvista"]].forEach(([id,k])=>document.querySelectorAll(`#${id} button`).forEach(b=>{b.setAttribute("aria-pressed",b.dataset.v==S[k]);if(id=="inst"){b.disabled=!avail().includes(b.dataset.v);if(b.dataset.v=="sep")b.style.display=avail().includes("sep")?"":"none"}}));
-  const ys=years();const ALL=[...new Set([...Object.keys(PRES).map(Number),...Object.keys(DIP).map(Number),...Object.keys(GOBC).map(Number)])].sort((a,b)=>b-a);document.getElementById("anio").innerHTML=ALL.map(y=>`<option value="${y}" ${y==S.anio?"selected":""} ${ys.includes(y)?"":"disabled"}>${y}${ys.includes(y)?"":" · próximamente"}</option>`).join("")}
+  const ys=years();const ALL=[...new Set([...Object.keys(PRES).map(Number),...Object.keys(DIP).map(Number),...Object.keys(GOBC).map(Number)])].sort((a,b)=>b-a);document.getElementById("anio").innerHTML=ALL.map(y=>{const ok=ys.includes(y),w=ok?null:whyNo(y);return`<option value="${y}" ${y==S.anio?"selected":""} ${ok?"":"disabled"} ${w?`title="${w[1]}"`:""}>${y}${ok?"":" · "+w[0]}</option>`}).join("")}
+function whyNo(y){const NC="no corresponde",ND="no disponible";
+  if(S.cargo=="presidente")return[NC,"No hubo elección presidencial ese año"];
+  if(S.cargo=="senadores")return y<2001&&y!=1973?[NC,"Hasta 2001 los senadores los elegían las legislaturas provinciales"]:[ND,"Hubo elección, pero no hay resultados en la base"];
+  if(S.cargo=="gobernadores")return y>=1983&&(y-1983)%4?[NC,"Los gobernadores se agrupan por ciclos de cuatro años (1983, 1987, 1991…)"]:[ND,"No hay resultados de gobernadores para ese año en la base"];
+  return[ND,"No hay resultados de diputados para ese año en la base"]}
 // hemiciclos
 const HORD=["IZQ","PJ","FREP","PS","CC","ALI","UCR","DES","PFED","PU","PROV","OTR","CONS","PRO","DER","LLA"];
 function hemi(svgId,tblId,cd,rows){const svg=d3.select("#"+svgId);svg.selectAll("*").remove();const tb=document.getElementById(tblId);
