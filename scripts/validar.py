@@ -17,7 +17,8 @@ vistos = set()
 for i, r in enumerate(enc):
     try:
         datetime.date.fromisoformat(r['fecha'])
-        assert r['serie'] in ('candidatos', 'fuerzas', 'balotaje'), 'serie'
+        assert r['serie'] in ('candidatos', 'fuerzas', 'balotaje', 'imagen'), 'serie'
+        assert all(isinstance(v, (int, float)) and 0 <= v <= 100 for v in r.get('negativa', {}).values()), 'negativa fuera de 0-100'
         assert r.get('encuestadora'), 'encuestadora'
         assert isinstance(r['valores'], dict) and r['valores'], 'valores'
         assert all(isinstance(v, (int, float)) and 0 <= v <= 100 for v in r['valores'].values()), 'valores fuera de 0-100'
