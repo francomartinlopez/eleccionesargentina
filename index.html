@@ -77,6 +77,7 @@ select{font:600 .95rem var(--f-b);padding:7px 8px;border:1px solid var(--line);b
 .ctip{position:absolute;z-index:3;pointer-events:none;background:#fff;border:1px solid #D7E3EE;border-radius:6px;box-shadow:0 2px 10px rgba(20,33,61,.14);padding:7px 9px;font-size:.82rem;min-width:150px;max-width:260px}.ctip b{display:block;margin-bottom:3px;font-size:.84rem}.ctip div{display:flex;align-items:center;gap:5px;white-space:nowrap;line-height:1.45}.ctip i{width:9px;height:9px;border-radius:50%;flex:none}.ctip small{color:#5B6B7C;overflow:hidden;text-overflow:ellipsis}.ctip em{margin-left:auto;padding-left:10px;font:600 .82rem var(--f-m);font-style:normal}
 @media(max-width:600px){.ctip{font-size:.72rem;min-width:120px;padding:5px 7px}.ctip b{font-size:.74rem}.ctip em{font-size:.72rem}}
 .now span b.moe{display:inline;font:600 .82rem var(--f-m);color:var(--ink);margin-right:4px}
+.ctab2{width:100%;border-collapse:collapse;font-size:.88rem}.ctab2 th{text-align:left}.ctab2 td{vertical-align:top;border-top:1px solid #E3EAF1;padding:5px 4px}.ctab2 td i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}.ctab2 small{color:var(--mut)}
 .h3s{font:760 1.3rem/1.15 var(--f-d);font-stretch:85%;margin:30px 0 6px}.ctab{min-width:720px}.ctab th{white-space:normal;vertical-align:bottom}.ctab td.cb{position:relative;min-width:92px}.ctab td.cb span{position:absolute;left:4px;top:7px;bottom:7px;background:#CFE3F5;border-radius:2px;max-width:calc(100% - 8px)}.ctab td.cb em{position:relative;font:600 .85rem var(--f-m);font-style:normal;padding-left:4px}.ctab tr.sep td{border-top:2px solid var(--cel)}
 footer{border-top:14px solid var(--cel);text-align:center;padding:18px;color:var(--mut);font-size:.85rem}
 </style></head><body>
@@ -180,6 +181,10 @@ footer{border-top:14px solid var(--cel);text-align:center;padding:18px;color:var
 <label>Nivel<span class="seg" id="pnivel"><button data-v="prov" aria-pressed="true">Provincia</button><button data-v="dep">Departamento</button></span></label>
 </div>
 <div class="grid"><div class="mapbox"><svg id="pmap" viewBox="0 0 520 860"></svg></div><div class="panel"><h3 id="pptit"></h3><div class="sub" id="ppsub"></div><div class="bars" id="ppbars"></div><div class="unit empty" id="ppunit">Tocá un distrito.</div><p class="note" id="ppnote"></p></div></div>
+
+<h3 class="h3s">Calendario electoral 2027 por provincia</h3>
+<p class="lead">La mayoría de las provincias separa sus elecciones de la presidencial. El mapa muestra en qué estado está la fecha de cada una; abajo, la lista ordenada por fecha con su fuente.</p>
+<div class="grid"><div class="mapbox"><svg id="calmap" viewBox="0 0 520 860" role="img" aria-label="Mapa del calendario electoral provincial 2027"></svg></div><div class="panel"><div class="legend" id="callg"></div><div id="callist" class="wrapt"></div><p class="note" id="calnote"></p></div></div>
 </section>
 
 <section id="fuentes">
@@ -205,6 +210,7 @@ footer{border-top:14px solid var(--cel);text-align:center;padding:18px;color:var
 <script src="datos/congreso.js"></script>
 <script src="datos/participacion.js"></script>
 <script src="datos/evolucion.js"></script>
+<script src="datos/calendario2027.js"></script>
 <script src="datos/meta.js"></script>
 <script src="datos/linea_de_tiempo.js"></script>
 <script src="datos/encuestas.js"></script>
@@ -593,6 +599,19 @@ function evolRender(){if(typeof EVOL=="undefined")return;const el=document.getEl
   show(RW.length-1);
   document.getElementById("evoltab").innerHTML=`<table><tr><th>Año</th><th>Elección</th><th>Oficialismo</th><th></th><th>Principal oposición</th><th></th><th>Izq.</th><th>Centro</th><th>Der.</th><th>Abst.</th><th>Blanco</th><th>Nulo</th><th>Los tres</th></tr>${RW.map(r=>`<tr><td>${r.y}</td><td>${IN[r.inst]||r.tipo}</td><td>${r.ofi?r.ofi.n:"—"}</td><td class="n">${r.ofi?fnum(r.ofi.v):""}</td><td>${r.opo?r.opo.n:"—"}</td><td class="n">${r.opo?fnum(r.opo.v):""}</td><td class="n">${fnum(r.I)}</td><td class="n">${fnum(r.C)}</td><td class="n">${fnum(r.D)}</td><td class="n">${r.abst!=null?fnum(r.abst):"—"}</td><td class="n">${r.bl!=null?fnum(r.bl):"—"}</td><td class="n">${r.nul!=null?fnum(r.nul):"—"}</td><td class="n">${r.suma!=null?fnum(r.suma):"—"}</td></tr>`).join("")}</table>`}
 
+// ===== Calendario electoral 2027 por provincia =====
+const CALST={"oficial":["#14213D","Fecha oficial"],"convocada":["#14213D","Fecha oficial"],"anunciada":["#1F3A93","Anunciada"],"proyectada":["#5B8FD0","Proyectada"],"trascendido":["#5B8FD0","Proyectada"],"en evaluación":["#5B8FD0","Proyectada"],"con Nación":["#F6B40E","Con la nacional (24 oct.)"],"posible con Nación":["#F6D27A","Posible con la nacional"],"desdobla, sin fecha":["#B9D3EE","Desdobla, sin fecha"],"probable desdoblamiento":["#B9D3EE","Desdobla, sin fecha"],"sin definir":["#C9D3DC","Sin definir"]};
+const MES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+function calFecha(f){if(!f)return"sin fecha";const p=f.split("-");if(p[1]&&p[1].includes("/"))return p[1].split("/").map(m=>MES[+m-1]).join(" o ")+" de "+p[0];if(p.length==2)return MES[+p[1]-1]+" de "+p[0];return(+p[2])+" de "+MES[+p[1]-1]+" de "+p[0]}
+function cal27Render(){if(typeof CAL27=="undefined")return;const P={};CAL27.provincias.forEach(r=>P[r.prov]=r);
+  const svg=d3.select("#calmap");svg.selectAll("*").remove();
+  svg.append("g").selectAll("path").data(prov.features).join("path").attr("d",path).attr("fill",f=>{const r=P[f.properties.PROV_COD||f.id];return r?CALST[r.estado][0]:"#EEF2F6"}).attr("stroke","#fff").attr("stroke-width",.9)
+   .on("mousemove",(e,f)=>{const pc=f.properties.PROV_COD||f.id,r=P[pc];tip.style.display="block";tip.style.left=Math.min(e.clientX+12,innerWidth-270)+"px";tip.style.top=e.clientY+12+"px";tip.innerHTML=`<b>${PROVN[pc]}</b><br>`+(r?`${calFecha(r.fecha)}${r.paso?` (PASO: ${calFecha(r.paso)})`:""}<br><small>${CALST[r.estado][1]} · ${r.cargos}</small>`:"Sin información relevada")}).on("mouseleave",()=>tip.style.display="none");
+  const ord=CAL27.provincias.slice().sort((a,b)=>(a.fecha||"9999").localeCompare(b.fecha||"9999"));
+  document.getElementById("callist").innerHTML=`<table class="ctab2"><tr><th>Provincia</th><th>Fecha</th><th>Estado</th></tr>${ord.map(r=>`<tr><td><i style="background:${CALST[r.estado][0]}"></i>${PROVN[r.prov]}</td><td>${calFecha(r.fecha)}${r.paso?`<br><small>PASO: ${calFecha(r.paso)}</small>`:""}</td><td>${CALST[r.estado][1]}<br><small>${r.cargos}${r.nota?" · "+r.nota:""} <a href="${r.fuente}" target="_blank" rel="noopener">fuente</a></small></td></tr>`).join("")}</table>`;
+  const seen={};document.getElementById("callg").innerHTML=Object.values(CALST).filter(v=>!seen[v[1]]&&(seen[v[1]]=1)).map(v=>`<span><i style="background:${v[0]}"></i>${v[1]}</span>`).join("")+`<span><i style="background:#EEF2F6"></i>Sin información</span>`;
+  const N=CAL27.nacional;document.getElementById("calnote").innerHTML=`Nacionales: primera vuelta presidencial el ${calFecha(N.fecha)} y balotaje, si hace falta, el ${calFecha(N.balotaje)}. ${N.paso} ${CAL27.nota} Relevamiento al ${calFecha(CAL27.actualizado)}; las fechas no oficiales pueden cambiar.`}
+
 const PS={cargo:"presidente",inst:"general",nivel:"prov",sel:null};
 function projVals(code,lvl){if(typeof PROY=="undefined")return null;const pc=code.slice(0,2);
   if(PS.cargo=="senadores"&&!PROY.senado2027.includes(pc))return null;if(PS.cargo=="gobernadores"&&!PROY.gob2027.includes(pc))return null;
@@ -616,5 +635,5 @@ function projRender(){const el=document.getElementById("pmap");if(typeof PROY=="
   document.querySelectorAll("#pinst button").forEach(b=>{b.disabled=b.dataset.v=="balotaje"&&(PS.cargo!="presidente"||!PROY.balotaje);b.setAttribute("aria-pressed",b.dataset.v==PS.inst)})}
 [["pcargo","cargo"],["pinst","inst"],["pnivel","nivel"]].forEach(([id,k])=>document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{PS[k]=b.dataset.v;if(PS.cargo!="presidente")PS.inst="general";PS.sel=null;document.querySelectorAll(`#${id} button`).forEach(x=>x.setAttribute("aria-pressed",x==b));projRender()}));
 
-render();try{encRender();icgRender();if(typeof icgdRender=='function')icgdRender();if(typeof evolRender=='function')evolRender();if(typeof projRender=='function')projRender()}catch(e){console.error(e)}
+render();try{encRender();icgRender();if(typeof icgdRender=='function')icgdRender();if(typeof evolRender=='function')evolRender();if(typeof cal27Render=='function')cal27Render();if(typeof projRender=='function')projRender()}catch(e){console.error(e)}
 </script></body></html>
