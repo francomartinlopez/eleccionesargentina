@@ -1,0 +1,478 @@
+{
+ "web": "Monitor Electoral",
+ "version": "1.0",
+ "generado": "2026-11-25T10:50:54-03:00",
+ "indicadores": [],
+ "novedades": [
+  {
+   "id": "2026-11-24-eleccion-neuquen-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Neuquén fija sus elecciones provinciales para el 14 de febrero de 2027",
+   "resumen": "Neuquén fija sus elecciones provinciales para el 14 de febrero de 2027. Cargos: gobernador, legislatura y municipios. Decreto 1860 del gobernador Figueroa. Estado: oficial, según el relevamiento del sitio al 24 de noviembre de 2026.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "provincia",
+    "provincia": "Neuquén",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eltribuno.com/nacionales/2026-11-15-0-0-0-elecciones-2027-que-provincias-definieron-su-fecha-de-comicios-y-cuales-aun-estan-en-duda"
+  },
+  {
+   "id": "2026-11-24-eleccion-santa-fe-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Santa Fe fija sus elecciones provinciales para el 13 de junio de 2027",
+   "resumen": "Santa Fe fija sus elecciones provinciales para el 13 de junio de 2027. Cargos: provinciales. PASO provinciales el 18 de abril de 2027. Decreto pendiente. Estado: anunciada, según el relevamiento del sitio al 24 de noviembre de 2026.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "provincia",
+    "provincia": "Santa Fe",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eltribuno.com/nacionales/2026-11-15-0-0-0-elecciones-2027-que-provincias-definieron-su-fecha-de-comicios-y-cuales-aun-estan-en-duda"
+  },
+  {
+   "id": "2026-11-24-eleccion-tucuman-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Tucumán fija sus elecciones provinciales para el 9 de mayo de 2027",
+   "resumen": "Tucumán fija sus elecciones provinciales para el 9 de mayo de 2027. Cargos: ejecutivos, legislativos y municipales. Convocada por el gobernador Jaldo. Estado: convocada, según el relevamiento del sitio al 24 de noviembre de 2026.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "provincia",
+    "provincia": "Tucumán",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eltribuno.com/nacionales/2026-11-15-0-0-0-elecciones-2027-que-provincias-definieron-su-fecha-de-comicios-y-cuales-aun-estan-en-duda"
+  },
+  {
+   "id": "2026-11-24-eleccion-salta-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Salta fija sus elecciones provinciales para el 16 de mayo de 2027",
+   "resumen": "Salta fija sus elecciones provinciales para el 16 de mayo de 2027. Cargos: gobernador y cargos provinciales. Voto electrónico, sin PASO; convocatoria a publicarse. Estado: anunciada, según el relevamiento del sitio al 24 de noviembre de 2026.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "provincia",
+    "provincia": "Salta",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.canal26.com/politica/2026/11/14/elecciones-2027-en-la-argentina-las-provincias-que-desdoblaron-las-que-iran-con-nacion-y-las-que-mantienen-la-incognita/"
+  },
+  {
+   "id": "2026-11-24-eleccion-catamarca-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Catamarca votará con la elección nacional del 24 de octubre de 2027",
+   "resumen": "Catamarca votará con la elección nacional del 24 de octubre de 2027. Cargos: provinciales junto con las nacionales. Confirmado por el gobernador Jalil. Estado: con Nación, según el relevamiento del sitio al 24 de noviembre de 2026.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "provincia",
+    "provincia": "Catamarca",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eltribuno.com/nacionales/2026-11-15-0-0-0-elecciones-2027-que-provincias-definieron-su-fecha-de-comicios-y-cuales-aun-estan-en-duda"
+  },
+  {
+   "id": "2026-11-24-eleccion-paso-nacionales-2027",
+   "fecha_dato": "2026-11-24",
+   "titulo": "Estado de las PASO nacionales 2027",
+   "resumen": "En debate: el oficialismo busca suspender las PASO nacionales en la reforma política (sesión prevista para el 26 de noviembre de 2026). Hasta que se apruebe, siguen vigentes por ley. Elección presidencial: 24 de octubre de 2027.",
+   "tipo": "elección",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eltribuno.com/nacionales/2026-11-15-0-0-0-elecciones-2027-que-provincias-definieron-su-fecha-de-comicios-y-cuales-aun-estan-en-duda"
+  },
+  {
+   "id": "2026-10-26-encuesta-delfos",
+   "fecha_dato": "2026-10-26",
+   "titulo": "Encuesta de Delfos: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Delfos (4.995 casos) sobre la elección presidencial de 2027: primera vuelta: Kicillof 36,4 %, Milei 32,9 %, Macri 4,8 %; primera vuelta: Kicillof 38,6 %, Milei 35,2 %, Izquierda 8,1 %; intención de voto por fuerza: peronismo 37,5 %, La Libertad Avanza 32,5 %, izquierda 6,1 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://perfil.com/politica/encuesta-2027-quien-gana-hoy-el-duelo-milei-kicillof-aHL8b3P2EP7u"
+  },
+  {
+   "id": "2026-10-25-encuesta-cb-consultora",
+   "fecha_dato": "2026-10-25",
+   "titulo": "Encuesta de CB Consultora: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de CB Consultora (1.151 casos) sobre la elección presidencial de 2027: balotaje Milei 43 % vs. Kicillof 40,6 %; balotaje Bullrich 47,3 % vs. Kicillof 40,1 %; primera vuelta: Milei 27,1 %, Kicillof 16,5 %, Cristina 12,1 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://noticiasargentinas.com/politica/milei--kicillof-y-bullrich--que-revela-una-nueva-encuesta-sobre-las-elecciones-de-2027_a6ae1dc96be9be2610e8a308a"
+  },
+  {
+   "id": "2026-10-20-encuesta-celag",
+   "fecha_dato": "2026-10-20",
+   "titulo": "Encuesta de CELAG: balotaje",
+   "resumen": "Encuesta nacional de CELAG (2.000 casos) sobre la elección presidencial de 2027: balotaje Kicillof 42,7 % vs. Milei 42,5 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://noticias.perfil.com/noticias/politica/la-encuesta-que-marca-un-empate-tecnico-entre-milei-y-kicillof-en-el-ballotage.phtml"
+  },
+  {
+   "id": "2026-10-19-encuesta-zuban-cordoba",
+   "fecha_dato": "2026-10-19",
+   "titulo": "Encuesta de Zuban Córdoba: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Zuban Córdoba (1.600 casos) sobre la elección presidencial de 2027: intención de voto por fuerza: peronismo 36,6 %, La Libertad Avanza 31,5 %, PRO/JxC 5,6 %; intención de voto por fuerza: peronismo 41 %, La Libertad Avanza 37,8 %, izquierda 5,9 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.letrap.com.ar/politica/axel-kicillof-lidera-el-ranking-imagen-positiva-y-el-peronismo-aventaja-javier-milei-tres-puntos-n5427699"
+  },
+  {
+   "id": "2026-10-15-encuesta-afiches",
+   "fecha_dato": "2026-10-15",
+   "titulo": "Encuesta de Afiches: balotaje",
+   "resumen": "Encuesta nacional de Afiches sobre la elección presidencial de 2027: balotaje Cristina 39 % vs. Milei 36 %; balotaje Massa 38 % vs. Milei 34 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://noticias.perfil.com/noticias/politica/una-encuesta-afirma-que-milei-perderia-en-distintos-escenarios-de-ballotage.phtml"
+  },
+  {
+   "id": "2026-10-14-encuesta-analogias",
+   "fecha_dato": "2026-10-14",
+   "titulo": "Encuesta de Analogías: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Analogías (2.863 casos) sobre la elección presidencial de 2027: intención de voto por fuerza: peronismo 31,6 %, La Libertad Avanza 30,9 %, izquierda 8,6 %; imagen positiva: Cristina 45,1 %, Bullrich 44 %, Kicillof 43,3 %, Milei 38,9 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.cronista.com/economia-politica/midieron-a-milei-y-a-kicillof-para-las-elecciones-2027-quien-gana-un-balotaje-segun-la-ultima-encuesta/"
+  },
+  {
+   "id": "2026-10-13-encuesta-proyeccion-consultores",
+   "fecha_dato": "2026-10-13",
+   "titulo": "Encuesta de Proyección Consultores: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Proyección Consultores (1.231 casos) sobre la elección presidencial de 2027: balotaje Milei 41 % vs. Kicillof 39,1 %; primera vuelta: Milei 37 %, Kicillof 31,6 %, Izquierda 7,4 %; intención de voto por fuerza: La Libertad Avanza 37,8 %, peronismo 35,9 %, PRO/JxC 4,2 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.letrap.com.ar/politica/javier-milei-le-saca-cinco-puntos-ventaja-axel-kicillof-primera-vuelta-pero-el-balotaje-sigue-abierto-n5427481"
+  },
+  {
+   "id": "2026-10-05-encuesta-giacobbe-asociados",
+   "fecha_dato": "2026-10-05",
+   "titulo": "Encuesta de Giacobbe & Asociados: imagen de dirigentes",
+   "resumen": "Encuesta nacional de Giacobbe & Asociados (2.500 casos) sobre la elección presidencial de 2027: imagen positiva: Milei 36 %, Bullrich 35,8 %, Kicillof 35,6 %, Cristina 27,2 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/reperfilar/encuesta-javier-milei-tiene-un-56-de-imagen-negativa-pero-consolidado-como-el-politico-de-mejor-imagen-segun-giacobbe.phtml"
+  },
+  {
+   "id": "2026-09-28-encuesta-qsocial",
+   "fecha_dato": "2026-09-28",
+   "titulo": "Encuesta de QSocial: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de QSocial (1.650 casos) sobre la elección presidencial de 2027: balotaje Milei 42 % vs. Kicillof 41 %; primera vuelta: Milei 31 %, Kicillof 31 %, Izquierda 7 %; intención de voto por fuerza: La Libertad Avanza 26 %, peronismo 23 %, Kirchnerismo 13 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.eldestapeweb.com/politica/encuesta-elecciones-2027-milei-kicillof-empatan-balotaje-define-punto-20261013125029"
+  },
+  {
+   "id": "2026-09-25-encuesta-equipo-mide",
+   "fecha_dato": "2026-09-25",
+   "titulo": "Encuesta de Equipo Mide: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Equipo Mide (2.114 casos) sobre la elección presidencial de 2027: primera vuelta: Milei 31 %, Kicillof 25 %, Izquierda 6 %; imagen positiva: Bullrich 41 %, Milei 39 %, Kicillof 39 %, Massa 32 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/politica/una-encuesta-revela-cuanto-pueden-crecer-milei-kicillof-bullrich-y-massa-para-las-elecciones-del-2027.phtml"
+  },
+  {
+   "id": "2026-09-22-encuesta-delfos",
+   "fecha_dato": "2026-09-22",
+   "titulo": "Encuesta de Delfos: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Delfos (4.664 casos) sobre la elección presidencial de 2027: balotaje Cristina 45,6 % vs. Milei 39,2 %; imagen positiva: Kicillof 41 %, Cristina 37 %, Milei 36 %, Massa 28 %; balotaje Massa 44,2 % vs. Milei 39,1 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/cordoba/una-encuesta-puso-a-milei-contra-las-tres-principales-figuras-k-y-el-resultado-no-le-gusto-en-casa-rosada.phtml"
+  },
+  {
+   "id": "2026-09-19-encuesta-zuban-cordoba",
+   "fecha_dato": "2026-09-19",
+   "titulo": "Encuesta de Zuban Córdoba: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Zuban Córdoba (2.000 casos) sobre la elección presidencial de 2027: intención de voto por fuerza: peronismo 35,9 %, La Libertad Avanza 35,1 %, izquierda 6,4 %; intención de voto por fuerza: peronismo 34 %, La Libertad Avanza 30,1 %, PRO/JxC 5,8 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://eleconomista.com.ar/politica/milei-alcanza-636-desaprobacion-nuevos-datos-sobre-kicillof-elecciones-2027-n98457"
+  },
+  {
+   "id": "2026-09-17-encuesta-trends",
+   "fecha_dato": "2026-09-17",
+   "titulo": "Encuesta de Trends: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Trends (2.000 casos) sobre la elección presidencial de 2027: balotaje Milei 42 % vs. Kicillof 40 %; balotaje Milei 42 % vs. Cristina 39 %; balotaje Milei 44 % vs. Massa 39 %; intención de voto por fuerza: La Libertad Avanza 35 %, peronismo 33 %, izquierda 8 %; imagen positiva: Milei 44 %, Bullrich 43 %…",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/politica/elecciones-2027-una-encuesta-midio-a-milei-frente-a-kicillof-cristina-y-massa.phtml"
+  },
+  {
+   "id": "2026-09-15-encuesta-synopsis",
+   "fecha_dato": "2026-09-15",
+   "titulo": "Encuesta de Synopsis: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Synopsis (1.257 casos) sobre la elección presidencial de 2027: balotaje Milei 43,1 % vs. Kicillof 42 %; balotaje Milei 43,1 % vs. Massa 38,8 %; intención de voto por fuerza: La Libertad Avanza 33,6 %, peronismo 32,7 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/nea/encuesta-2027-libertad-avanza-y-el-peronismo-en-empate-tecnico.phtml"
+  },
+  {
+   "id": "2026-09-10-encuesta-proyeccion-consultores",
+   "fecha_dato": "2026-09-10",
+   "titulo": "Encuesta de Proyección Consultores: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Proyección Consultores (1.354 casos) sobre la elección presidencial de 2027: balotaje Milei 40,8 % vs. Kicillof 40,2 %; primera vuelta: Milei 36,9 %, Kicillof 32 %, Izquierda 8,2 %; intención de voto por fuerza: La Libertad Avanza 35 %, peronismo 31,9 %, PRO/JxC 5,6 %; imagen positiva: Bullrich 42,7 %, Milei 39,3 %, Kicillof 36,9 %, Massa…",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/nea/encuesta-empate-tecnico-en-un-eventual-balotaje-entre-milei-y-kicillof-en-un-escenario-incierto.phtml"
+  },
+  {
+   "id": "2026-09-09-encuesta-opinaia",
+   "fecha_dato": "2026-09-09",
+   "titulo": "Encuesta de Opinaia: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Opinaia (1.000 casos) sobre la elección presidencial de 2027: intención de voto por fuerza: La Libertad Avanza 33 %, peronismo 29 %, PRO/JxC 7 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+  },
+  {
+   "id": "2026-09-09-encuesta-explanans",
+   "fecha_dato": "2026-09-09",
+   "titulo": "Encuesta de Explanans: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Explanans (7.015 casos) sobre la elección presidencial de 2027: balotaje Kicillof 43,1 % vs. Milei 41,9 %; primera vuelta: Milei 38,5 %, Kicillof 24 %, Izquierda 10,2 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://enredaccion.com.ar/encuesta-milei-podria-ganar-en-primera-vuelta-y-si-hubiera-balotaje-kicillof-pasaria-al-frente/"
+  },
+  {
+   "id": "2026-09-08-encuesta-analogias",
+   "fecha_dato": "2026-09-08",
+   "titulo": "Encuesta de Analogías: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Analogías (2.932 casos) sobre la elección presidencial de 2027: intención de voto por fuerza: peronismo 31 %, La Libertad Avanza 30,7 %, Provincias Unidas 7,4 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
+  },
+  {
+   "id": "2026-09-03-encuesta-atlasintel",
+   "fecha_dato": "2026-09-03",
+   "titulo": "Encuesta de AtlasIntel: imagen de dirigentes",
+   "resumen": "Encuesta nacional de AtlasIntel (2.193 casos) sobre la elección presidencial de 2027: imagen positiva: Cristina 39 %, Bullrich 38 %, Milei 35 %. Cristina Fernández de Kirchner está inhabilitada por condena firme.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://eleconomista.com.ar/politica/la-encuesta-mas-respetada-mercado-revelo-quienes-son-3-politicas-mejor-imagen-argentina-n98042"
+  },
+  {
+   "id": "2026-08-29-encuesta-tendencias",
+   "fecha_dato": "2026-08-29",
+   "titulo": "Encuesta de Tendencias: intención de voto presidencial 2027",
+   "resumen": "Encuesta nacional de Tendencias (4.958 casos) sobre la elección presidencial de 2027: balotaje Kicillof 46,1 % vs. Milei 37,4 %; primera vuelta: Kicillof 33,7 %, Milei 32,4 %, Izquierda 10,2 %.",
+   "tipo": "encuesta",
+   "eje": "Política nacional",
+   "alcance": {
+    "nivel": "nacional",
+    "provincia": "",
+    "localidad": "",
+    "pais": "Argentina"
+   },
+   "rubros": [],
+   "subrubros": [],
+   "exposicion": [],
+   "url": "https://www.perfil.com/noticias/politica/una-encuesta-muestra-un-cambio-en-la-intencion-de-voto-para-las-elecciones-2027.phtml"
+  }
+ ],
+ "agenda": [],
+ "faltantes": []
+}

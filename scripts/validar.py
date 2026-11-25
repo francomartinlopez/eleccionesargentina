@@ -34,5 +34,11 @@ if icg:
 for f in ('meta.js', 'linea_de_tiempo.js'):
     s = open(D + f, encoding='utf-8').read()
     if s.count('{') != s.count('}') or s.count('[') != s.count(']'): err.append(f'{f}: llaves o corchetes desbalanceados')
+try:
+    di = json.load(open('datos-informe.json', encoding='utf-8'))
+    assert di['web'] == 'Monitor Electoral' and all(k in di for k in ('indicadores', 'novedades', 'agenda', 'faltantes'))
+    assert all(n['tipo'] in ('encuesta', 'elección') and len(n['resumen'].split()) <= 61 for n in di['novedades'])
+except FileNotFoundError: pass
+except Exception as e: err.append(f'datos-informe.json: {e}')
 print('\n'.join(err) if err else f'OK: {len(data)} archivos, {len(enc)} encuestas, ICG hasta {icg["serie"][-1]["mes"] if icg else "—"}')
 sys.exit(1 if err else 0)
