@@ -1,5 +1,5 @@
 # Genera datos-informe.json (raíz del sitio) para la web de informes de Plexum.
-# Especificación: «Datos que cada web publica», v1.2, parte común + apartado 6 (Monitor Electoral):
+# Especificación: «Datos que cada web publica», v1.3, parte común + apartado 6 (Monitor Electoral):
 #   agenda = elecciones provinciales y municipales de los próximos 60 días;
 #   novedades «encuesta» y «elección» de los últimos 90 días, con alcance.
 # Solo usa lo que el sitio ya muestra (datos/encuestas.js y datos/calendario2027.js).
@@ -115,7 +115,7 @@ for campo, nombre in (('fecha', 'Elección presidencial y legislativa nacional')
         agenda.append({'fecha': d.isoformat(), 'evento': nombre, 'eje': EJE, 'alcance': NAC, 'rubros': [], 'url': SITIO + '#proyeccion'})
 agenda.sort(key=lambda x: x['fecha'])
 
-out = {'web': 'Monitor Electoral', 'version': '1.0', 'generado': AHORA.isoformat(),
+out = {'web': 'Monitor Electoral', 'version': '1.3', 'generado': AHORA.isoformat(),
        'indicadores': [], 'novedades': novedades, 'agenda': agenda, 'faltantes': []}
 json.dump(out, open('datos-informe.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print(f'datos-informe.json: {len(novedades)} novedades ({sum(n["tipo"] == "encuesta" for n in novedades)} encuestas, '
